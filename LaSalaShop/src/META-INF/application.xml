@@ -1,0 +1,13 @@
+<application>
+  <display-name>lasalashop</display-name>
+  <module>
+    <web>
+      <web-uri>lasalashop.war</web-uri>
+      <context-root>/lasalashop</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>lasalashop.jar</ejb>
+  </module>
+</application>
+
