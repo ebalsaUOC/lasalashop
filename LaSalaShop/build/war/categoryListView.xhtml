@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>eAgenda UOC</title>
+</h:head>
+
+<h:body>
+
+	<h1>Administrar categories</h1>
+
+<h:form name = "llistat"> 
+<h:dataTable value="#{list.categoryListView}" var="category" border="1" first="0" width="80%" frame="none" rules="all"  >
+     
+     <h:column align="center">
+          <f:facet name="header">NÚMERO</f:facet> 
+          <h:outputText value="#{category.id}"/>
+     </h:column>
+     <h:column  align="center">
+          <f:facet name="header">CATEGORIA</f:facet> 
+          <h:outputText align="center" value="#{category.name}" />
+     </h:column>
+     
+     <h:column align="center">
+          <h:commandButton value="Veure" action="categoryDetailView" actionListener="#{show.edit(category)}" immediate="true"/>          	                
+     
+     </h:column>
+     <h:column align="center">
+     	  <h:commandButton value="Editar/Crear" action="modifyCategoryView" actionListener="#{modify.edit(category)}" immediate="true"/>                             
+     </h:column>
+     
+    </h:dataTable> 
+
+ 	
+</h:form>
+
+</h:body>
+
+</html>

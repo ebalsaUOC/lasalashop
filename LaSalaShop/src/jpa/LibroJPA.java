@@ -25,6 +25,7 @@ public class LibroJPA implements Serializable {
 	 private double pvp;
 	 private DistribuidoraJPA distribuidora;
 	 private EnumeratedStatus Status; 
+	 private int unidades;
 	
 	/**
 	 * Class constructor methods
@@ -41,6 +42,7 @@ public class LibroJPA implements Serializable {
 	 */
 	@GeneratedValue
 	@Id
+	@Column(name = "ID_LIBRO")
 	public Long getId() {
 		return id;
 	}
@@ -108,7 +110,8 @@ public class LibroJPA implements Serializable {
 		this.pvp = pvp;
 	}
 
-
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ID_DISTRIBUIDORA", nullable = false)
 	public DistribuidoraJPA getDistribuidora() {
 		return distribuidora;
 	}
@@ -131,6 +134,16 @@ public class LibroJPA implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+
+	public int getUnidades() {
+		return unidades;
+	}
+
+
+	public void setUnidades(int unidades) {
+		this.unidades = unidades;
 	}
 	
 	

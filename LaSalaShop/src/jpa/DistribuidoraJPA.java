@@ -4,7 +4,7 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import domain.EnumeratedStatus;
+
 
 /**
 *
@@ -35,6 +35,7 @@ public class DistribuidoraJPA implements Serializable {
 	 */
 	@GeneratedValue
 	@Id
+	@Column(name = "ID_DISTRIBUIDORA")
 	public Long getId() {
 		return id;
 	}
@@ -49,7 +50,7 @@ public class DistribuidoraJPA implements Serializable {
 		this.name = name;
 	}
 
-
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "distribuidora")
 	public Set<LibroJPA> getBooks() {
 		return books;
 	}

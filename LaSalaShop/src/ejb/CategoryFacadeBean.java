@@ -22,7 +22,7 @@ public class CategoryFacadeBean implements CategoryFacadeRemote {
 	}
 
 	//Persistence Unit Context
-	@PersistenceContext(unitName="EPCSD_Practica") 
+	@PersistenceContext(unitName="lasalashop") 
 	private EntityManager entman;
 	
 	/**
