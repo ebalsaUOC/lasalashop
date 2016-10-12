@@ -32,7 +32,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     
     <!-- The Welcome File List -->
     <welcome-file-list>
-    	<welcome-file>lasalashop.xhtml</welcome-file>
+    	<welcome-file>lasalashopMainTemplate.xhtml</welcome-file>
     </welcome-file-list>
-
+    
+   
 </web-app>

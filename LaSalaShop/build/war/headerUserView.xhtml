@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+
+<head>
+<title>#{page_title} | e-Agenda</title>
+<link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div id="main">
+		<div id="links"></div>
+		<div id="header">
+			<div id="logo">
+				<a href="principal.xhtml">
+					<div id="logo_text">
+						<h1>LaSalaShop</h1>
+					</div>
+				</a>
+			</div>
+			<div id="menubar">
+			<h:form name="menu">
+					<ul id="menu">
+						<li class="#{header_nav_index}"><a href="headerUserView.xhtml">Home</a></li>
+						<li class="#{header_nav_events}"><a href="eventsListAllView.xhtml">Events</a></li>
+	                    <li class="#{header_nav_findevents}"><a href="findEvents.xhtml">Cercar Events</a></li>
+						<li class="#{header_nav_favorites}"><a href="favoriteEventsListView.xhtml">Events Favorits</a></li>
+						<li class="#{header_nav_orders}"><a href="ordersUserListView.xhtml">Compres</a></li>
+						<li class="#{header_nav_logout}"><h:commandLink class="logout" action="principal" actionListener="#{loginMBean.logout()}" >Logout [Nom Usuari]</h:commandLink></li>
+					</ul>
+				</h:form>
+			</div>
+		</div>
+		
+		<div id="site_content">
+			<div class="sidebar">
+				<h1>Últimes Noticies</h1>
+				<h2>Nou lloc web</h2>
+				<h3>Novembre 25, 2014</h3>
+				<p>
+					Podeu començar a fer servir e-Agenda.<br />
+					<a href="#" title="L'assignatura Projecte de Desenvolupament del Programari té com a objectiu primordial el desenvolupament d'un projecte concret de programari i està basada en l'aplicació pràctica dels coneixements i competències obtingudes fins al moment en el Grau."
+						class="tooltip">
+						<span title="LLegeix més">Llegeix més</span>
+					</a>
+				</p>
+				<h1>Links</h1>
+				<h:form name = "links"> 
+				<ul>
+					<li><h:commandLink action="eventsListAllView" actionListener="#{listEvents.viewAllEvents()}" >Veure events</h:commandLink></li>
+					<li><a href="findEvents.xhtml">Cercador d'events</a></li>
+				</ul>
+				</h:form>
+			</div>
+			<div id="content">
+				<ui:insert name="content">
+					<h1>Pantalla principal pels usuaris d'e-Agenda</h1>
+					    <section class="main">
+					        <section class="wrap">
+					            <aside>
+					                <div class="widget">
+					                    <div class="us_wrapper us_fan_count_wrapper">
+					                        <div class="us_fan_count rows-3">
+					                            <a class="us_facebook_fan_count_link" href="eventsListAllView.xhtml">
+					                                <div class="us_facebook_fan_count us_fan_count_button">
+					                                    <div class="us_fan_count_icon_holder">
+					                                        <i class="us-icon-facebook"></i>
+					                                    </div>
+					                                    <div class="us_fan_count_desc">Events</div>
+					                                </div>
+					                            </a>
+					                        </div><div class="us_fan_count rows-3">
+					                            <a class="us_twitter_fan_count_link" href="ordersUserListView.xhtml">
+					                                <div class="us_twitter_fan_count us_fan_count_button">
+					                                    <div class="us_fan_count_icon_holder"><i class="us-icon-twitter"></i></div>
+					                                    <div class="us_fan_count_desc">Compres</div>
+					                                </div>
+					                            </a>
+					                        </div>
+					                        <div class="us_fan_count rows-3">
+					                            <a class="us_google_fan_count_link" href="findEvents.xhtml">
+					                                <div class="us_google_fan_count us_fan_count_button">
+					                                    <div class="us_fan_count_icon_holder"><i class="us-icon-google"></i></div>
+					                                    <div class="us_fan_count_desc">Buscador d'events</div>
+					                                </div>
+					                            </a>
+					                        </div><div class="us_fan_count rows-3">
+					                            <a class="us_pinterest_fan_count_link" href="favoriteEventsListView.xhtml">
+					                                <div class="us_pinterest_fan_count us_fan_count_button">
+					                                    <div class="us_fan_count_icon_holder"><i class="us-icon-pinterest"></i></div>					                                  
+					                                    <div class="us_fan_count_desc">Els meus favorits</div>
+					                                </div>
+					                            </a>
+					                        </div>
+					                    </div>
+					                </div>
+					            </aside>
+					        </section>
+					    </section>
+				</ui:insert>
+			</div>
+			<div id="site_content_bottom"></div>
+		</div>
+		<div id="footer">
+			Copyright &copy; GRUP 1 PDP All Rights Reserved. | <a href="http://www.uoc.edu">Grup 1 PDP 2014-2015</a>
+		</div>
+	</div>
+</body>
+</html>
