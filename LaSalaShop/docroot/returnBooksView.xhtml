@@ -22,11 +22,11 @@
             	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; " >
 		<f:selectItems value="#{addBookMBean.distribuidorasDescList}" />
 		</h:selectOneMenu>
-	<h:dataTable value="#{list.categoryListView}" var="category" border="1" first="0" width="80%" frame="none" rules="all"  >
+	<h:dataTable value="#{returnBooksMBean.booksListView}" var="book" border="1" first="0" width="80%" frame="none" rules="all"  >
      
      <h:column align="center">
           <f:facet name="header">TITULO</f:facet> 
-          <h:outputText value="#{category.id}"/>
+          <h:outputText value="#{book.title}"/>
      </h:column>
      <h:column>
         <h:selectBooleanCheckbox value="#{bean.checked[item.id]}" />

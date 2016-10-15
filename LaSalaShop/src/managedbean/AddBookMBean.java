@@ -19,7 +19,7 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 import javax.faces.context.FacesContext;
 
-import jpa.DistribuidoraJPA;
+import jpa.DistributorJPA;
 import ejb.LibroFacadeRemote;
 
 
@@ -41,7 +41,7 @@ public class AddBookMBean implements Serializable
 	private double pvp;
 	private int unidades;
 	private String distribuidora;
-	private Collection<DistribuidoraJPA> distribuidoras = new ArrayList<DistribuidoraJPA>();
+	private Collection<DistributorJPA> distribuidoras = new ArrayList<DistributorJPA>();
 	private Collection<String> distribuidorasDescList = new ArrayList<String>();
 	
 	public AddBookMBean() throws Exception
@@ -222,11 +222,11 @@ public class AddBookMBean implements Serializable
 		this.distribuidora = distribuidora;
 	}
 
-	public Collection<DistribuidoraJPA> getDistribuidoras() {
+	public Collection<DistributorJPA> getDistribuidoras() {
 		return distribuidoras;
 	}
 
-	public void setDistribuidoras(Collection<DistribuidoraJPA> distribuidoras) {
+	public void setDistribuidoras(Collection<DistributorJPA> distribuidoras) {
 		this.distribuidoras = distribuidoras;
 	}
 

@@ -4,8 +4,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import domain.EnumeratedStatus;
-import jpa.DistribuidoraJPA;
-import jpa.LibroJPA;
+import jpa.DistributorJPA;
+import jpa.BookJPA;
 
 /**
  * EJB Session Bean Class 
@@ -26,19 +26,19 @@ public class LibroFacadeBean implements LibroFacadeRemote {
 	 * Method that add new Book
 	 */	
 	@Override
-	public void addBook(String titulo, String autor, String editorial,
-			String isbn, double netoCompra, double pvp,
-			DistribuidoraJPA distribuidora) {
-		LibroJPA lib = new LibroJPA();
-		lib.setTitulo(titulo);
-		lib.setAutor(autor);
-		lib.setEditorial(editorial);
-		lib.setIsbn(isbn);
-		lib.setNetoCompra(netoCompra);
-		lib.setPvp(pvp);
-		lib.setDistribuidora(distribuidora);
-		lib.setStatus(EnumeratedStatus.AVAILABLE);
-		entman.persist(lib);
+	public void addBook(String title, String author, String editor,
+			String isbn, double price, double pvp,
+			DistributorJPA distributor) {
+		BookJPA book = new BookJPA();
+		book.setTitle(title);
+		book.setAuthor(author);
+		book.setEditor(editor);
+		book.setIsbn(isbn);
+		book.setPrice(price);
+		book.setPvp(pvp);
+		book.setDistributor(distributor);
+		book.setStatus(EnumeratedStatus.AVAILABLE);
+		entman.persist(book);
 	}
 
 }

@@ -11,20 +11,20 @@ import javax.persistence.*;
 * @author ebalsa@uoc.edu
 */
 @Entity
-@Table(name="lasalashop.distribuidoras")
-public class DistribuidoraJPA implements Serializable {
+@Table(name="lasalashop.distributors")
+public class DistributorJPA implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private long id;
     private String name;
-    private Set<LibroJPA> books = new HashSet<LibroJPA>();
+    private Set<BookJPA> books = new HashSet<BookJPA>();
 	
 	/**
 	 * Class constructor methods
 	 */
 		
-	public DistribuidoraJPA() {		
+	public DistributorJPA() {		
 		this.id=getId();		
 	}
 	
@@ -35,7 +35,7 @@ public class DistribuidoraJPA implements Serializable {
 	 */
 	@GeneratedValue
 	@Id
-	@Column(name = "ID_DISTRIBUIDORA")
+	@Column(name = "ID_DISTRIBUTOR")
 	public Long getId() {
 		return id;
 	}
@@ -50,13 +50,13 @@ public class DistribuidoraJPA implements Serializable {
 		this.name = name;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "distribuidora")
-	public Set<LibroJPA> getBooks() {
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "distributor")
+	public Set<BookJPA> getBooks() {
 		return books;
 	}
 
 
-	public void setBooks(Set<LibroJPA> books) {
+	public void setBooks(Set<BookJPA> books) {
 		this.books = books;
 	}
 
