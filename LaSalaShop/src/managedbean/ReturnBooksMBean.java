@@ -1,18 +1,11 @@
 package managedbean;
 
-import java.io.Serializable;
 import java.util.*;
 
-import javax.ejb.EJB;
 import javax.faces.model.SelectItem;
 import javax.faces.bean.*;
-import javax.faces.event.ValueChangeEvent;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 
 import jpa.BookJPA;
-import jpa.CategoryJPA;
-import ejb.CategoryFacadeRemote;
 
 
 
@@ -25,22 +18,22 @@ import ejb.CategoryFacadeRemote;
 public class ReturnBooksMBean {
 	
 	//@EJB private CategoryFacadeRemote categories;
-	protected Collection<SelectItem> booksList = new ArrayList<SelectItem>();
+//	protected Collection<SelectItem> booksList = new ArrayList<SelectItem>();
 	protected Collection<BookJPA> booksListView;
 	
 	public ReturnBooksMBean() throws Exception
 	{
-		this.bookList();
+		//this.bookList();
 	}
 
 	/**
 	 * Method get which return Categories Collection
 	 * @return Collection
 	 */
-	public Collection<SelectItem> getBooksList()
-	{
-		return booksList;
-	}
+//	public Collection<SelectItem> getBooksList()
+//	{
+//		return booksList;
+//	}
 	
 	/**
 	 * Method that takes a collection of instances of CategoryJPA calling 
@@ -62,28 +55,27 @@ public class ReturnBooksMBean {
 //		}PARA LA VERSION DEFINITIVA, OBTENER AQUI AMBAS LISTAS CON UNA LLAMADA AL EJB Y ELIMINAR LA LLAMADA EN EL METODO INFERIOR
 		
 		//CODIGO PARA EL PROTOTIPO:
-		BookJPA b1 = new BookJPA();
-		b1.setTitle("El Libro de la vida");
-		BookJPA b2 = new BookJPA();
-		b1.setTitle("El Libro de la muerte");
-		BookJPA b3 = new BookJPA();
-		b1.setTitle("El Libro con el titulo mas largo del mundo");
-		BookJPA b4 = new BookJPA();
-		b1.setTitle("I");
-		BookJPA b5 = new BookJPA();
-		b1.setTitle("5añ_!");
-		booksListView.add(b1);
-		booksListView.add(b2);
-		booksListView.add(b3);
-		booksListView.add(b4);
-		booksListView.add(b5);
-		
-		for(BookJPA b: booksListView){
-			SelectItem item = new SelectItem(b.getTitle());
-			this.booksList.add(item);
-		}
-		
-	
+//		BookJPA b1 = new BookJPA();
+//		b1.setTitle("El Libro de la vida");
+//		BookJPA b2 = new BookJPA();
+//		b2.setTitle("El Libro de la muerte");
+//		BookJPA b3 = new BookJPA();
+//		b3.setTitle("El Libro con el titulo mas largo del mundo");
+//		BookJPA b4 = new BookJPA();
+//		b4.setTitle("I");
+//		BookJPA b5 = new BookJPA();
+//		b5.setTitle("5añ_!");
+//		this.booksListView.add(b1);
+////		this.booksListView.add(b2);
+//		this.booksListView.add(b3);
+//		this.booksListView.add(b4);
+//		this.booksListView.add(b5);
+//		
+////		for(BookJPA b: booksListView){
+//			SelectItem item = new SelectItem("TITULO");
+//			this.booksList.add(item);
+////		}
+//		
 	}	
 	
 	public Collection<BookJPA> getBooksListView() throws Exception
@@ -96,23 +88,24 @@ public class ReturnBooksMBean {
 //		return categoryListView;	
 		
 		//CODIGO PARA EL PROTOTIPO:
+		Collection<BookJPA> booksListViewP = new ArrayList<BookJPA>();
 		BookJPA b1 = new BookJPA();
 		b1.setTitle("El Libro de la vida");
 		BookJPA b2 = new BookJPA();
-		b1.setTitle("El Libro de la muerte");
+		b2.setTitle("El Libro de la muerte");
 		BookJPA b3 = new BookJPA();
-		b1.setTitle("El Libro con el titulo mas largo del mundo");
+		b3.setTitle("El Libro con el titulo mas largo del mundo");
 		BookJPA b4 = new BookJPA();
-		b1.setTitle("I");
+		b4.setTitle("I");
 		BookJPA b5 = new BookJPA();
-		b1.setTitle("5añ_!");
-		booksListView.add(b1);
-		booksListView.add(b2);
-		booksListView.add(b3);
-		booksListView.add(b4);
-		booksListView.add(b5);
-		
-		return booksListView;
+		b5.setTitle("5añ_!");
+		booksListViewP.add(b1);
+		booksListViewP.add(b2);
+		booksListViewP.add(b3);
+		booksListViewP.add(b4);
+		booksListViewP.add(b5);
+			
+		return booksListViewP;
 		
 	}
 }
