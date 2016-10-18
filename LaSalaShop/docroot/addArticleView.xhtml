@@ -9,11 +9,11 @@
 
 <ui:composition template="./lasalashopMainTemplate.xhtml">
 	<ui:param name="header_nav_login" value="tab_selected" />
-	<ui:param name="page_title" value="Insertar nuevo libro" />
+	<ui:param name="page_title" value="Insertar nuevo artículo" />
 	<ui:define name="content">
-		<h1>Inserta un nuevo libro:</h1>
+		<h1>Inserta un nuevo artículo:</h1>
 		<h:form align="center">	
-		<h:selectOneMenu  valueChangeListener="#{addBookMBean.distribuidoraValueChanged}" value="#{addBookMBean.distribuidora}" immediate="true"
+		<h:selectOneMenu  valueChangeListener="#{addArticleMBean.familiaValueChanged}" value="#{addBookMBean.distribuidora}" immediate="true"
 			style="
 				padding: 14px; 
    				border: solid 1px #517B97; 
@@ -23,21 +23,19 @@
     	    	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
             	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
             	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; " >
-		<f:selectItems value="#{addBookMBean.distribuidorasDescList}" />
+		<f:selectItems value="#{addArticleMBean.familiasDescList}" />
 		</h:selectOneMenu>
 		<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
-				<h:outputLabel value="Título:"/>
-				<h:inputText value="título" binding="#{input1}" /> 
-				<h:outputLabel value="Autor:"/>
-				<h:inputText value="autor" binding="#{input2}" /> 
-				<h:outputLabel value="ISBN:"/>
-				<h:inputText value="isbn" binding="#{input3}" /> 
+				<h:outputLabel value="Nombre compra:"/>
+				<h:inputText value="nombre compra" binding="#{input1}" /> 
+				<h:outputLabel value="Nombre comercial:"/>
+				<h:inputText value="nombre comercial" binding="#{input2}" /> 
 				<h:outputLabel value="Precio Compra:"/>
-				<h:inputText value="0.00" binding="#{input4}" validatorMessage="Precio compra formato incorrecto">
+				<h:inputText value="0.00" binding="#{input3}" validatorMessage="Precio compra formato incorrecto">
 				 <f:validateRegex pattern="/[0-9.]/i" />
 				</h:inputText> 
 				<h:outputLabel value="PVP:"/>
-				<h:inputText value="0.00" binding="#{input5}" validatorMessage="PVP formato incorrecto">
+				<h:inputText value="0.00" binding="#{input4}" validatorMessage="PVP formato incorrecto">
 				 <f:validateRegex pattern="/[0-9.]/i" />
 				</h:inputText> 
 				<h:outputLabel value="Unidades:"/>
@@ -45,7 +43,7 @@
 				 <f:validateRegex pattern="/[0-9]/i" />
 				</h:inputText> 
 			</h:panelGrid>
-			<h:commandButton value="GUARDAR" action="#{registerMBean.register(input1.value, input2.value,input3.value, input5.value,input6.value,input7.value,input8.value,input9.value,input10.value)}" />
+			<h:commandButton value="GUARDAR" action="#{addBookMBean.register(input1.value, input2.value,input3.value, input5.value,input6.value,input7.value,input8.value,input9.value,input10.value)}" />
 		<h:messages styleClass="display-error" />
 		</h:form>
 	</ui:define>
