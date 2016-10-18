@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+
+<ui:composition template="./lasalashopMainTemplate.xhtml">
+	<ui:param name="header_nav_login" value="tab_selected" />
+	<ui:param name="page_title" value="Registrar nuevo artista" />
+	<ui:define name="content">
+		<h1>Registra un nuevo artista:</h1>
+		<h:form align="center">	
+		<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
+				<h:outputLabel value="Nombre:"/>
+				<h:inputText value="nombre" binding="#{input1}" /> 
+				<h:outputLabel value="Apellido1:"/>
+				<h:inputText value="apellido1" binding="#{input2}" /> 
+				<h:outputLabel value="Apellido2:"/>
+				<h:inputText value="apellido2" binding="#{input3}" /> 
+				<h:outputLabel value="NIF-CIF:"/>
+				<h:inputText value="nif-cif" binding="#{input4}" />
+				<h:outputLabel value="Telefono1:"/>
+				<h:inputText value="telefono1" binding="#{input5}" />
+				<h:outputLabel value="Telefono2:"/>
+				<h:inputText value="telefono2" binding="#{input6}" />
+				<h:outputLabel value="Dirección:"/>
+				<h:inputText value="dirección" binding="#{input7}" />
+				<h:outputLabel value="email:"/>
+				<h:inputText value="email" binding="#{input8}" />
+			</h:panelGrid>
+			<h:commandButton value="GUARDAR DATOS" action="#{addBookMBean.register(input1.value, input2.value,input3.value, input5.value,input6.value,input7.value,input8.value,input9.value,input10.value)}" />
+		<h:messages styleClass="display-error" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
