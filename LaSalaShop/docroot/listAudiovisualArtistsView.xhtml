@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+
+<ui:composition template="./lasalashopMainTemplate.xhtml">
+	<ui:param name="header_nav_login" value="tab_selected" />
+	<ui:param name="page_title" value="Lista artistas audiovisuales" />
+	<ui:define name="content">
+		<h1>Artistas audiovisuales:</h1>
+		<h:form align="center">	
+	<h:dataTable value="#{listAudiovisualArtistsMBean.artistsListView}" var="artist" border="1" first="0" width="80%" frame="none" rules="all"  >
+     
+     <h:column align="center">
+          <f:facet name="header">NOMBRE</f:facet> 
+          <h:outputText value="#{artist.name}"/>
+     </h:column>
+     <h:column align="center">
+          <f:facet name="header">APELLIDO</f:facet> 
+          <h:outputText value="#{artist.surname}"/>
+     </h:column>
+      <h:column align="center">
+          <f:facet name="header">TELEFONO</f:facet> 
+          <h:outputText value="#{artist.telephone}"/>
+     </h:column>
+     <h:column align="center">
+          <h:link value="Consultar"/>
+     </h:column>
+    </h:dataTable> 
+		<h:messages styleClass="display-error" />
+	</h:form>
+	</ui:define>
+</ui:composition>
+</html>
