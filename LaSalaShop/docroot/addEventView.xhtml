@@ -1,99 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
-
-  <ui:composition template="./headerView.xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 	
-	<!-- Parametros de UI -->
-	<ui:param name="header_nav_events" value="tab_selected" />
-	<ui:param name="page_title" value="Add Event" />
-		
+
+<ui:composition template="./lasalashopMainTemplate.xhtml">
+	<ui:param name="header_nav_login" value="tab_selected" />
+	<ui:param name="page_title" value="Insertar nuevo evento" />
 	<ui:define name="content">
-				<link rel="stylesheet" type="text/css" media="all" href="resources/jsDatePick_ltr.min.css" />
-				<script type="text/javascript" src="resources/jsDatePick.min.1.3.js"></script>
+				<link rel="stylesheet" type="text/css" media="all" href="resources/css/jsDatePick_ltr.min.css" />
+				<script type="text/javascript" src="resources/js/jsDatePick.min.1.3.js"></script>
 		        <script type="text/javascript">
 	      		//<![CDATA[
 					window.onload = function(){
 						new JsDatePick({
 							useMode:2,
-							target:"dataInici",
+							target:"dataInicio",
 							dateFormat:"%d/%m/%Y"
 						});
 
 						new JsDatePick({
 							useMode:2,
-							target:"dataFi",
+							target:"dataFin",
 							dateFormat:"%d/%m/%Y"
 						});
 					};
 				//]]>	
 				</script>
-				<h1>Afegir event</h1>
-				<p>Si us plau dona d'alta un nou event:</p>
-				<h:form name="Crear Event" prependId="false">
-					<h:panelGrid columns="2" width="100%" border="0">
-
-						<h:outputLabel value="Nom" />
-						<h:inputText value="#{addEvent.name}" />
-						
-						<h:outputLabel value="Descripció" />
-						<h:inputText value="#{addEvent.description}"  />
-						
-						<h:outputLabel value="Data d'inici" />
-						<h:inputText value="#{addEvent.iniDate}" id="dataInici" >
+		<h1>Inserta un nuevo evento:</h1>
+		<h:form name="Crear Event" align="center">	
+		<h:selectOneMenu  valueChangeListener="#{addEventMBean.spaceValueChanged}" value="#{addEventMBean.space}" immediate="true"
+			style="
+				padding: 14px; 
+   				border: solid 1px #517B97; 
+    			outline: 0; 
+    	    	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF)); 
+    			background: -moz-linear-gradient(top, #FFFFFF, #CAD9E3 1px, #FFFFFF 25px); 
+    	    	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+            	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+            	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; " >
+		<f:selectItems value="#{addEventMBean.spacesDescList}" />
+		</h:selectOneMenu>
+		<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
+				<h:outputLabel value="Título Evento:"/>
+				<h:inputText value="título evento" binding="#{input1}" /> 
+						<h:outputLabel value="Fecha inicio" />
+						<h:inputText value="#{addEventMBean.iniDate}" id="dataInicio" >
 							<f:convertDateTime pattern="dd/mm/yyyy" />
 						</h:inputText>
 						
-						<h:outputLabel value="Data de fi" />
-						<h:inputText value="#{addEvent.endDate}" id="dataFi"  >
+						<h:outputLabel value="Fecha fin" />
+						<h:inputText value="#{addEvent.endDate}" id="dataFin"  >
 							<f:convertDateTime pattern="dd/mm/yyyy" />
 						</h:inputText>
-						
-						<h:outputLabel value="Imatge" />
-						<h:panelGrid columns="2" class="imageList" border="0" cellspacing="0" cellpadding="0">
-							<h:selectOneRadio layout="pageDirection" value="#{addEvent.picture}">
-								<f:selectItem itemLabel="Convits" itemValue="event1.png" />
-								<f:selectItem itemLabel="Festes" itemValue="event2.png" />
-								<f:selectItem itemLabel="Cates" itemValue="event3.png" />
-								<f:selectItem itemLabel="Negocis" itemValue="event4.png" />
-							</h:selectOneRadio>
-							<h:panelGrid columns="1" border="0" cellspacing="0" cellpadding="0">
-								<h:graphicImage value="./resources/images/event1.png" />
-								<h:graphicImage value="./resources/images/event2.png" />
-								<h:graphicImage value="./resources/images/event3.png" />
-								<h:graphicImage value="./resources/images/event4.png" />
-							</h:panelGrid>
-						</h:panelGrid>
-
-						<h:outputLabel value="Paraules clau. Pots seleccionar varies alhora" />
-						<h:selectManyListbox valueChangeListener="#{addEvent.wordsValueChanged}" value="#{addEvent.selectedWords}"  converter="#{wordConverter}"  immediate="true">
-							<f:selectItems value="#{addEvent.allWordsList}" />	
-						</h:selectManyListbox>
-						
-						
-						<h:outputLabel value="Carrer"/>
-						<h:inputText value="#{addEvent.street}"/>
-						
-						<h:outputLabel value="Ciutat"/>
-						<h:inputText value="#{addEvent.city}"/>
-						
-						<h:outputLabel value="Pais"/>
-						<h:inputText value="#{addEvent.country}"/>
-						
-						<h:outputLabel value="Número"/>
-						<h:inputText value="#{addEvent.number}"/>
-						
-						<h:outputLabel value="Empresa"/>
-						<h:selectOneMenu  value="#{addEvent.selectedCompany}" valueChangeListener="#{addEvent.companyValueChanged}" converter="#{companyConverter}">
-							<f:selectItems value="#{addEvent.companiesList}" />
-						</h:selectOneMenu>
-						
-					</h:panelGrid>
-					<h:commandButton value="Afegeix el nou Event" action="#{addEvent.AddEvent()}" />
-					<h:messages styleClass="display-error" /> 
-				</h:form>
+			</h:panelGrid>
+			<h:commandButton value="CREAR EVENTO" action="#{registerMBean.register(input1.value, input2.value,input3.value, input5.value,input6.value,input7.value,input8.value,input9.value,input10.value)}" />
+		<h:messages styleClass="display-error" />
+		</h:form>
 	</ui:define>
-  </ui:composition>
+</ui:composition>
 </html>
