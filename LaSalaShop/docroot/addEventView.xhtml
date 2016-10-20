@@ -18,20 +18,20 @@
 					window.onload = function(){
 						new JsDatePick({
 							useMode:2,
-							target:"dataInicio",
+							target:"form:dataInicio",
 							dateFormat:"%d/%m/%Y"
 						});
 
 						new JsDatePick({
 							useMode:2,
-							target:"dataFin",
+							target:"form:dataFin",
 							dateFormat:"%d/%m/%Y"
 						});
 					};
 				//]]>	
 				</script>
 		<h1>Inserta un nuevo evento:</h1>
-		<h:form name="Crear Event" align="center">	
+		<h:form name="Crear Event" align="center" id="form">	
 		<h:selectOneMenu  valueChangeListener="#{addEventMBean.spaceValueChanged}" value="#{addEventMBean.space}" immediate="true"
 			style="
 				padding: 14px; 
