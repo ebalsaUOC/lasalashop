@@ -32,7 +32,7 @@ public class SearchBookMBean implements Serializable
 	
 		}
 
-	public String serach(String s) throws Exception{
+	public String search(String s) throws Exception{
 
 		return "ListBooksResultView";
 	}
