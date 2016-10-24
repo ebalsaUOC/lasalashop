@@ -18,6 +18,7 @@ public class ArticlePrototypeJPA implements Serializable {
 
 	 private  String commercialName;
 	 private double pvp;
+	 private int units;
 
 	/**
 	 * Class constructor methods
@@ -51,6 +52,14 @@ public class ArticlePrototypeJPA implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public int getUnits() {
+		return units;
+	}
+
+	public void setUnits(int units) {
+		this.units = units;
 	}
 
 

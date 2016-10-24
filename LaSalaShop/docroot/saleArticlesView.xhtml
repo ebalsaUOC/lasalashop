@@ -8,14 +8,14 @@
 	<ui:param name="header_nav_login" value="tab_selected" />
 	<ui:param name="page_title" value="Efectuar venta" />
 	<ui:define name="content">
-		<h1>Venta artículos:</h1>
+		<h1>Busqueda artículos:</h1>
 		<h:form align="center">	
 		<h:panelGrid columns="3" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
 				<h:outputLabel value="NOMBRE:"/>
 				<h:inputText value="espiral"/> 
 				<h:commandButton value="BUSCAR" />
 		</h:panelGrid>
-	<h:dataTable value="#{saleArticlesMBean.articlesSearchView}" var="article" border="1" first="0" width="80%" frame="none" rules="all"  >
+	<h:dataTable value="#{saleArticlesMBean.articlesSearchView}" var="article" border="1" first="0" width="100%" frame="none" rules="all"  >
      <h:column align="center">
           <f:facet name="header">NOMBRE</f:facet> 
           <h:outputText value="#{article.commercialName}"/>
@@ -25,12 +25,26 @@
           <h:outputText value="#{article.pvp}"/>
      </h:column>
      <h:column>
-        <h:selectBooleanCheckbox  />
+        <h:commandButton value="AÑADIR" />
      </h:column>
-     
     </h:dataTable> 
-		<h:commandButton value="AÑADIR SELECCIONADOS"/>
-		<h:messages styleClass="display-error" />
+    <h1>TOTAL VENTA:</h1>
+	<h:dataTable value="#{saleArticlesMBean.articlesSelectedView}" var="articleS" border="1" first="0" width="100%" frame="none" rules="all"  >
+     <h:column align="center">
+          <f:facet name="header">ARTICULO</f:facet> 
+          <h:outputText value="#{articleS.commercialName}"/>
+     </h:column>
+          <h:column align="center">
+          <f:facet name="header">UNIDADES</f:facet> 
+          <h:outputText value="#{articleS.units}"/>
+     </h:column>
+     <h:column align="center">
+          <f:facet name="header">PVP</f:facet> 
+          <h:outputText value="#{articleS.pvp}"/>
+     </h:column>
+    </h:dataTable> 
+    <h:commandButton value="EFECTUAR VENTA"/>
+	<h:messages styleClass="display-error" />
 		</h:form>
 	</ui:define>
 </ui:composition>
