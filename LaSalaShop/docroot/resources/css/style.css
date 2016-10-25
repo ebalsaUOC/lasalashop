@@ -695,10 +695,8 @@ ul.display-error li {
 	z-index: 99;
 }
 
-/* Estilos para las imagenes de los eventos*/
+.myRadioCtrl span { 
+	padding-right: 20px; 
+}
 
-.imageList td{
-	height: 145px;
-	border-top-color: #CCCCCC;
-	width:100px;
 }

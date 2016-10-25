@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+
+<ui:composition template="./lasalashopMainTemplate.xhtml">
+	<ui:param name="header_nav_login" value="tab_selected" />
+	<ui:param name="page_title" value="Crear promo" />
+	<ui:define name="content">
+		<h1>Crear promocion:</h1>
+		<h:form align="center">	
+		<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
+				<h:outputLabel value="ARTICULO:"/>
+				<h:inputText value="Camiseta geométrica"/> 
+		</h:panelGrid>
+		<h:panelGroup >
+			<h:selectOneRadio value="#{article.discount}" >
+			   	<f:selectItem itemValue="2x1" itemLabel="2x1" />
+			   	<f:selectItem itemValue="3x2" itemLabel="3x2" />
+			   	<f:selectItem itemValue="gift" itemLabel="100% - gratis"/>
+			   	<f:selectItem itemValue="5" itemLabel="5%"/>
+			   	<f:selectItem itemValue="10" itemLabel="10%"/>
+			   	<f:selectItem itemValue="15" itemLabel="15%"/>
+			   	<f:selectItem itemValue="other" itemLabel="other" />
+			  </h:selectOneRadio>
+			  <h:inputText value="%" style="display:block;width:40px"/>
+		  </h:panelGroup>
+      <h:commandButton value="EFECTUAR PROMOCION"/>
+	<h:messages styleClass="display-error" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
