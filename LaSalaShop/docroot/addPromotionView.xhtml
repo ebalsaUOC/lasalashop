@@ -14,7 +14,7 @@
 				<h:outputLabel value="ARTICULO:"/>
 				<h:inputText value="Camiseta geométrica"/> 
 		</h:panelGrid>
-		<h:panelGroup >
+		<h:panelGroup style="display:inline-table;" >
 			<h:selectOneRadio value="#{article.discount}" >
 			   	<f:selectItem itemValue="2x1" itemLabel="2x1" />
 			   	<f:selectItem itemValue="3x2" itemLabel="3x2" />
@@ -23,9 +23,9 @@
 			   	<f:selectItem itemValue="10" itemLabel="10%"/>
 			   	<f:selectItem itemValue="15" itemLabel="15%"/>
 			   	<f:selectItem itemValue="other" itemLabel="other" />
+			    <h:inputText value="%" style="display:block;width:40px"/>
 			  </h:selectOneRadio>
-			  <h:inputText value="%" style="display:block;width:40px"/>
-		  </h:panelGroup>
+			 </h:panelGroup>
       <h:commandButton value="EFECTUAR PROMOCION"/>
 	<h:messages styleClass="display-error" />
 		</h:form>
