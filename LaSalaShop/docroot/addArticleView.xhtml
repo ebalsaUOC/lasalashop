@@ -15,10 +15,12 @@
 		<h:form align="center">	
 		<h:selectOneMenu  valueChangeListener="#{addArticleMBean.familiaValueChanged}" value="#{addBookMBean.distribuidora}" immediate="true"
 			style="
-				padding: 14px; 
-   				border: solid 1px #517B97; 
-    			outline: 0; 
-    	    	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF)); 
+				display: block;
+				width: 33%;
+				float: left;
+				margin: 0 0 20px 0;
+				border: solid 1px #517B97; 
+    			background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF)); 
     			background: -moz-linear-gradient(top, #FFFFFF, #CAD9E3 1px, #FFFFFF 25px); 
     	    	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
             	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
@@ -32,18 +34,18 @@
 				<h:inputText value="nombre comercial" binding="#{input2}" /> 
 				<h:outputLabel value="Precio Compra:"/>
 				<h:inputText value="0.00" binding="#{input3}" validatorMessage="Precio compra formato incorrecto">
-				 <f:validateRegex pattern="/[0-9.]/i" />
+				 <f:validateRegex pattern="[0-9.]+" />
 				</h:inputText> 
 				<h:outputLabel value="PVP:"/>
 				<h:inputText value="0.00" binding="#{input4}" validatorMessage="PVP formato incorrecto">
-				 <f:validateRegex pattern="/[0-9.]/i" />
+				 <f:validateRegex pattern="[0-9.]+" />
 				</h:inputText> 
 				<h:outputLabel value="Unidades:"/>
 				<h:inputText value="1" binding="#{input6}" validatorMessage="Unidades formato incorrecto">
-				 <f:validateRegex pattern="/[0-9]/i" />
+				 <f:validateRegex pattern="[0-9]+" />
 				</h:inputText> 
 			</h:panelGrid>
-			<h:commandButton value="GUARDAR" action="#{addBookMBean.register(input1.value, input2.value,input3.value, input5.value,input6.value,input7.value,input8.value,input9.value,input10.value)}" />
+			<h:commandButton value="GUARDAR" />
 		<h:messages styleClass="display-error" />
 		</h:form>
 	</ui:define>
