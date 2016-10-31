@@ -34,10 +34,12 @@
 		<h:form name="Crear Event" align="center" id="form">	
 		<h:selectOneMenu  valueChangeListener="#{addEventMBean.spaceValueChanged}" value="#{addEventMBean.space}" immediate="true"
 			style="
-				padding: 14px; 
-   				border: solid 1px #517B97; 
-    			outline: 0; 
-    	    	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF)); 
+				display: block;
+				width: 33%;
+				float: left;
+				margin: 0 0 20px 0;
+				border: solid 1px #517B97; 
+    			background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF)); 
     			background: -moz-linear-gradient(top, #FFFFFF, #CAD9E3 1px, #FFFFFF 25px); 
     	    	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
             	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
@@ -53,11 +55,11 @@
 						</h:inputText>
 						
 						<h:outputLabel value="Fecha fin" />
-						<h:inputText value="#{addEvent.endDate}" id="dataFin"  >
+						<h:inputText value="#{addEventMBean.endDate}" id="dataFin" >
 							<f:convertDateTime pattern="dd/mm/yyyy" />
 						</h:inputText>
 			</h:panelGrid>
-			<h:commandButton value="CREAR EVENTO" action="#{registerMBean.register(input1.value, input2.value,input3.value, input5.value,input6.value,input7.value,input8.value,input9.value,input10.value)}" />
+			<h:commandButton value="CREAR EVENTO" />
 		<h:messages styleClass="display-error" />
 		</h:form>
 	</ui:define>
