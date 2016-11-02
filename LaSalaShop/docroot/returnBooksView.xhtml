@@ -11,11 +11,13 @@
 		<h1>Preparar devolución:</h1>
 		<h:form align="center">	
 		<h:selectOneMenu  valueChangeListener="#{addBookMBean.distribuidoraValueChanged}" value="#{addBookMBean.distribuidora}" immediate="true"
-			style="
-				padding: 14px; 
-   				border: solid 1px #517B97; 
-    			outline: 0; 
-    	    	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF)); 
+					style="
+				display: block;
+				width: 33%;
+				float: left;
+				margin: 0 0 20px 0;
+				border: solid 1px #517B97; 
+    			background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF)); 
     			background: -moz-linear-gradient(top, #FFFFFF, #CAD9E3 1px, #FFFFFF 25px); 
     	    	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
             	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
@@ -33,7 +35,8 @@
      </h:column>
      
     </h:dataTable> 
-		<h:commandButton value="GUARDAR" action="#{registerMBean.register(input1.value, input2.value,input3.value, input5.value,input6.value,input7.value,input8.value,input9.value,input10.value)}" />
+		<h:commandButton value="GUARDAR" style="
+			    						width:80%;"/>
 		<h:messages styleClass="display-error" />
 		</h:form>
 	</ui:define>
