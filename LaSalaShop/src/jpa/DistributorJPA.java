@@ -18,6 +18,13 @@ public class DistributorJPA implements Serializable {
 	
 	private long id;
     private String name;
+    private String CIF;
+    private String contactPerson;
+    private String distEmail;
+    private String contactEmail;
+    private String mainTelNumber;
+    private String contactTelNumber;
+    
     private Set<BookJPA> books = new HashSet<BookJPA>();
 	
 	/**
@@ -63,6 +70,66 @@ public class DistributorJPA implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+
+	public String getCIF() {
+		return CIF;
+	}
+
+
+	public void setCIF(String cIF) {
+		CIF = cIF;
+	}
+
+
+	public String getContactPerson() {
+		return contactPerson;
+	}
+
+
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
+
+
+	public String getDistEmail() {
+		return distEmail;
+	}
+
+
+	public void setDistEmail(String distEmail) {
+		this.distEmail = distEmail;
+	}
+
+
+	public String getContactEmail() {
+		return contactEmail;
+	}
+
+
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
+	}
+
+
+	public String getMainTelNumber() {
+		return mainTelNumber;
+	}
+
+
+	public void setMainTelNumber(String mainTelNumber) {
+		this.mainTelNumber = mainTelNumber;
+	}
+
+
+	public String getContactTelNumber() {
+		return contactTelNumber;
+	}
+
+
+	public void setContactTelNumber(String contactTelNumber) {
+		this.contactTelNumber = contactTelNumber;
 	}
 	
 	

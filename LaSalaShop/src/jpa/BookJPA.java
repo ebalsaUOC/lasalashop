@@ -25,7 +25,7 @@ public class BookJPA implements Serializable {
 	 private double pvp;
 	 private DistributorJPA distributor;
 	 private EnumeratedStatus status; 
-	 private int units;
+	 private int copy;
 	
 	/**
 	 * Class constructor methods
@@ -129,13 +129,13 @@ public class BookJPA implements Serializable {
 	}
 
 
-	public int getUnits() {
-		return units;
+	public int getCopy() {
+		return copy;
 	}
 
 
-	public void setUnits(int units) {
-		this.units = units;
+	public void setCopy(int units) {
+		this.copy = units;
 	}
 
 
