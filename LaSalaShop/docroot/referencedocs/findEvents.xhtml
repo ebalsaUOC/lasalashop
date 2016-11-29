@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:composition template="./headerUserView.xhtml">
+  	<!-- Parametros de UI -->
+	<ui:param name="header_nav_findevents" value="tab_selected" />
+	<ui:param name="page_title" value="Events List" />
+	<ui:define name="content">
+	<h1>Cercador d'Events</h1>
+		<h:form name = "llistat">
+			<h2>Cerca d'events per <b>nom</b></h2>
+			<h:panelGrid columns="3" border="0" width="100%">
+				<h:outputText value="Introdueix un nom: "/>
+				<h:inputText binding="#{txtNombre}" />
+				<h:commandButton value="Cerca" action="eventsListAllView" actionListener="#{listEvents.findEventsByName(txtNombre.value)}"/> 
+			</h:panelGrid>
+			
+			<h2>Cerca d'events per <b>paraules clau</b></h2>
+				<h:panelGrid columns="3" border="0" width="100%">
+				<h:outputText value="Introdueix un mot clau: "/>
+				<h:inputText binding="#{txtWord}" />
+				<h:commandButton value="Cerca" action="eventsListAllView" actionListener="#{listEvents.findEventsByWord(txtWord.value)}"/>
+				<h:outputText value="Pots cercar fins a 3 paraules clau"/>
+				<h:outputText value="Exemple: Espectacle"/> 
+				<h:outputText value ="O també: Fira Cinema"/> 
+			</h:panelGrid>
+			<h:messages styleClass="display-error" /> 
+			<h2>Cerca d'events per <b>categoria</b></h2>
+			<h:panelGrid columns="3" border="0" width="100%">
+				<h:outputText value="Selecciona una categoria: "/>
+				<h:selectOneMenu valueChangeListener="#{addCategoryToEvent.categoryValueChanged}" value="#{addCategoryToEvent.selectedCategory}" converter="#{categoryConverter}" binding="#{cmbCategories}" >
+					<f:selectItems value="#{addCategoryToEvent.categoriesList}" />
+				</h:selectOneMenu>
+				<h:commandButton value="Cerca" action="eventsListAllView" actionListener="#{listEvents.findEventsByCategory(addCategoryToEvent.selectedCategory)}" /> 
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+  </ui:composition>
+</html>

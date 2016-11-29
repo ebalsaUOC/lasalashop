@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="./headerprincipalView.xhtml">
+	<ui:param name="header_nav_login" value="tab_selected" />
+	<ui:param name="page_title" value="Registrat a e-Agenda" />
+	<ui:define name="content">
+		<h1>REGISTRAT a l'aplicació e-Agenda:</h1>
+		<h:form align="center">	
+			<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
+				<h:outputLabel value="NIF:"/>
+				<h:inputText value="nif" binding="#{input1}" /> 
+				<h:outputLabel value="Nom:"/>
+				<h:inputText value="nom" binding="#{input2}" /> 
+				<h:outputLabel value="Cognoms:"/>
+				<h:inputText value="cognoms" binding="#{input3}" /> 
+				<h:outputLabel value="Pais:"/>
+				<h:inputText value="pais" binding="#{input5}" />
+				<h:outputLabel value="Ciutat:"/>
+				<h:inputText value="ciutat" binding="#{input6}" /> 
+				<h:outputLabel value="Carrer:"/>
+				<h:inputText value="carrer" binding="#{input8}" /> 
+				<h:outputLabel value="Número:"/>
+				<h:inputText value="número" binding="#{input7}" /> 
+				<h:outputLabel value="Idioma:"/>
+				<h:selectOneMenu valueChangeListener="#{registerMBean.languageValueChanged}" value="#{registerMBean.language}" immediate="true">
+					<f:selectItems value="#{registerMBean.languagesDescList}" />
+				</h:selectOneMenu>
+				<h:outputLabel value="Password:"/>
+				<h:inputSecret value="password" binding="#{input9}" />
+				<h:outputLabel value="E-mail:"/>
+				<h:inputText value="e-mail" binding="#{input10}" />
+			</h:panelGrid>
+			<h:commandButton value="Registrar-se" action="#{registerMBean.register(input1.value, input2.value,input3.value, input5.value,input6.value,input7.value,input8.value,input9.value,input10.value)}" />
+		<h:messages styleClass="display-error" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

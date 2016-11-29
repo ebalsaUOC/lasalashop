@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="./headerprincipalView.xhtml">
+
+	<!-- Parametros de UI -->
+	<ui:param name="header_nav_loginadmin" value="tab_selected" />
+	<ui:param name="page_title" value="Login Admin" />
+	<ui:define name="content">
+		<h:form align="center">
+			<h:panelGrid columns="3" width="100%">
+				<h:outputLabel>Password d'administrador:</h:outputLabel>
+				<h:inputSecret binding="#{txtPassword}" value="fatos" />
+				<h:commandButton value="Login admin"
+					action="#{loginAdminMBean.login(txtPassword.value)}" />
+			</h:panelGrid>
+			<h:messages styleClass="display-error" />
+		</h:form>
+		<!--  Borrar antes de la entrega -->
+        <script type="text/javascript">
+      		//<![CDATA[
+			var alltxtPass = document.getElementsByTagName("input");
+			for (var i=0; i < alltxtPass.length; i++) 
+				{
+				if (alltxtPass[i].type.toLowerCase() === "password") 
+					{
+					alltxtPass[i].value = "fatos";	
+					}
+				}
+			//]]>	
+		</script>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:debug hotkey="x" />
+<ui:composition template="./headerView.xhtml">
+	<!-- Parametros de UI -->
+	<ui:param name="header_nav_events" value="tab_selected" />
+	<ui:param name="page_title" value="View details Event" />
+
+	<ui:define name="content">
+		<h1>Detall de l'event seleccionat:</h1>
+		<h:form name="detail">
+			<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
+				
+				<h:outputLabel value="Imatge" />
+				<h:graphicImage url="./resources/images/#{showEvent.picture}"></h:graphicImage>
+				
+				<h:outputLabel value="Id" />
+				<h:outputText value="#{showEvent.id}" />
+				
+				<h:outputLabel value="Nom" />
+				<h:outputText value="#{showEvent.name}" />
+				
+				<h:outputLabel value="Descripció" />
+				<h:outputText value="#{showEvent.description}" />
+				
+				<h:outputLabel value="Localització" />
+				<h:outputText value="#{showEvent.location}" />
+				
+				<h:outputLabel value="Empresa organitzadora" />
+				<h:outputText value="#{showEvent.company.name}" />
+				
+				<h:outputLabel value="Inici" />
+				<h:outputText value="#{showEvent.iniDate}" />
+				
+				<h:outputLabel value="Fi" />
+				<h:outputText value="#{showEvent.endDate}" />
+				
+				<h:outputLabel value="Categories" />
+				<h:outputText value="#{showEvent.categoriesAsString}" />
+				
+				<h:outputLabel value="Tags" />
+				<h:outputText value="#{showEvent.words}" />
+				
+				<h:outputLabel value="Valoració" />
+				<h:outputText value="#{showEvent.ratting}" />
+				
+			</h:panelGrid>
+			<h:commandButton value="Tornar" action="eventsListView" actionListener="#{listEvents.viewAllEvents()}" immediate="true" />
+			<h1>Afegeix una <i>Categoria</i> al Event</h1>
+			<h:panelGrid columns="2" width="100%">
+				<h:selectOneMenu valueChangeListener="#{addCategoryToEvent.categoryValueChanged}" value="#{addCategoryToEvent.selectedCategory}" converter="#{categoryConverter}" binding="#{cmbCategories}" immediate="true" >
+					<f:selectItems value="#{addCategoryToEvent.categoriesList}" />
+				</h:selectOneMenu>
+				<h:commandButton value="Afegir categoria" action="eventsListView" actionListener="#{addCategoryToEvent.addCategory(showEvent.getDataEvent(), addCategoryToEvent.selectedCategory)}" immediate="true" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+

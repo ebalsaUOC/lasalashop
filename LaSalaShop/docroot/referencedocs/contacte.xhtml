@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:composition template="./headerprincipalView.xhtml">
+  	<!-- Parametros de UI -->
+	<ui:param name="header_nav_contact" value="tab_selected" />
+	<ui:param name="page_title" value="e-Agenda" />
+	<ui:define name="content">
+		<div id="panel">
+			<img src="resources/images/panel.jpg" alt="gray trees" />
+		</div>
+		<div id="content">
+			<h1>Contacta amb l'equip de desenvolupament</h1>
+			<p>Àlex Cabrera Gil <a href="mailto:acabreragil@uoc.edu">acabreragil@uoc.edu</a></p>
+			<p>Clara Dominguez Navarro <a href="mailto:cdominguezna@uoc.edu">cdominguezna@uoc.edu</a></p>
+			<p>Eduardo Balsa Sediles <a href="mailto:ebalsa@uoc.edu">ebalsa@uoc.edu</a></p>
+			<p>Marc Colom Royo <a href="mailto:mcolomro@uoc.edu">mcolomro@uoc.edu</a></p>
+			<p>Xesco Alarcón Moral <a href="mailto:falarconm@uoc.edu">falarconm@uoc.edu</a></p>
+		</div>
+	</ui:define>
+  </ui:composition>
+</html>

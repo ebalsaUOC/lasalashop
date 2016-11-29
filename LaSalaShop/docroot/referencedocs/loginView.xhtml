@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<f:metadata>
+	<f:viewParam name="email" value="#{loginMBean.email}" />
+	<f:viewParam name="password" value="#{loginMBean.password}" />
+</f:metadata>
+<ui:composition template="./headerprincipalView.xhtml">
+	<!-- Parametros de UI -->
+	<ui:param name="header_nav_login" value="tab_selected" />
+	<ui:param name="page_title" value="login" />
+	
+	<ui:define name="content">
+		<h:form>
+			 <h:panelGrid columns="2" border="0" width="100%">
+				 <h:outputLabel>Email:</h:outputLabel>
+				 <h:outputLabel>Password:</h:outputLabel>
+				 
+				 <h:inputText binding="#{input1}" value="#{loginMBean.email}" />
+				 <h:inputSecret binding="#{input2}" value="#{loginMBean.password}" />
+			</h:panelGrid>
+ 			<p>Pots loginar-te
+			<h:commandButton value="Login" action="#{loginMBean.login(input1.value, input2.value)}" />
+			</p>
+			<p>O registrar-te
+			<h:commandButton value="Registrat" action="#{loginMBean.gotoRegister()}" />
+			</p>
+			<h:messages styleClass="display-error" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

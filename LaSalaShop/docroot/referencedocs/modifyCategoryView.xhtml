@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="./headerView.xhtml">
+
+	<!-- Parametros de UI -->
+	<ui:param name="header_nav_categories" value="tab_selected" />
+	<ui:param name="page_title" value="Modificar categoria" />
+
+	<ui:define name="content">
+		<h1>Modificació de la categoria seleccionada:</h1>
+
+		<h:form name="Modificar categoria">
+            <h:panelGrid columns="3"  border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
+
+                <h:outputLabel value="Id " />
+                <h:outputLabel value="Nom" />
+                <h:outputLabel value="Descripció" />
+                
+                <h:outputText value="#{modifyCategory.id}" />
+                <h:inputText value="#{modifyCategory.name}" />
+                <h:inputText value="#{modifyCategory.description}"/>
+                
+            </h:panelGrid>
+            <h:commandButton value="Modificar" action="#{modifyCategory.modifyDataCategory()}" />
+            <h:commandButton value="Tornar" action="categoryListView" actionlistener="#{listCategories.categoryList()}" immediate="true" />
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

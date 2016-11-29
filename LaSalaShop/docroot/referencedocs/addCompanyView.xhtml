@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:composition template="./headerView.xhtml">
+	
+	<!-- Parametros de UI -->
+	<ui:param name="header_nav_companies" value="tab_selected" />
+	<ui:param name="page_title" value="Nova Empresa" />
+		
+	<ui:define name="content">
+				<h1>Afegir Empresa</h1>
+				<p>Si us plau dona d'alta una nova empresa:</p>
+				<h:form name="Create Company">
+					<h:panelGrid columns="2" width="100%">
+
+						<h:outputLabel value="Nom" />
+
+						<h:inputText value="#{addCompany.name}" />
+
+					</h:panelGrid>
+					<h:commandButton value="Afegeix la nova empresa" action="#{addCompany.AddCompany()}" />
+					<h:messages styleClass="display-error" />  
+				</h:form>
+	
+	</ui:define>
+  </ui:composition>
+</html>

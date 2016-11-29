@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:composition template="./headerprincipalView.xhtml">
+  	<!-- Parametros de UI -->
+	<ui:param name="header_nav_events" value="tab_selected" />
+	<ui:param name="page_title" value="e-Agenda" />
+	<ui:define name="content">
+		<div id="panel">
+			<img src="resources/images/panel.jpg" alt="gray trees" />
+		</div>
+		<div id="content">
+			<h1>Benvinguts a e-Agenda</h1>
+			<p>En aquesta aplicació podem entrar amb privilegis <i>d'administradors</i> o <i>d'usuari</i>.</p>
+			<p>Si entrem com <i>administrador</i> podem veure les categories, compres d'events, companyies i events. Podent modificar, afegir i llistar tots aquests elements.</p>
+			<p>En canvi si entrem com a <i>usuari </i>podrem veure i cercar events, comprar-los, suggerir-los, punutar-los, fer comentaris sobre ells i fins i tot convertir-los en els nostres favorits.</p>
+		</div>
+	</ui:define>
+  </ui:composition>
+</html>
