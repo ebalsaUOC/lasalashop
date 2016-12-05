@@ -18,7 +18,8 @@ public class DistributorJPA implements Serializable {
 	
 	private long id;
     private String name;
-    private String CIF;
+    private String legalName;
+    private String cif;
     private String contactPerson;
     private String distEmail;
     private String contactEmail;
@@ -35,6 +36,20 @@ public class DistributorJPA implements Serializable {
 		this.id=getId();		
 	}
 	
+	public DistributorJPA(String name, String legalName, String cif,
+			String contactPerson, String distEmail, String contactEmail,
+			String mainTelNumber, String contactTelNumber) {
+		super();
+		this.name = name;
+		this.legalName = legalName;
+		this.cif = cif;
+		this.contactPerson = contactPerson;
+		this.distEmail = distEmail;
+		this.contactEmail = contactEmail;
+		this.mainTelNumber = mainTelNumber;
+		this.contactTelNumber = contactTelNumber;
+		this.books = books;
+	}
 		
 	/**
 	 *  Methods get/set the fields of database
@@ -73,13 +88,13 @@ public class DistributorJPA implements Serializable {
 	}
 
 
-	public String getCIF() {
-		return CIF;
+	public String getCif() {
+		return cif;
 	}
 
 
-	public void setCIF(String cIF) {
-		CIF = cIF;
+	public void setCif(String cIF) {
+		cif = cIF;
 	}
 
 
@@ -131,6 +146,17 @@ public class DistributorJPA implements Serializable {
 	public void setContactTelNumber(String contactTelNumber) {
 		this.contactTelNumber = contactTelNumber;
 	}
+
+
+	public String getLegalName() {
+		return legalName;
+	}
+
+
+	public void setLegalName(String legalName) {
+		this.legalName = legalName;
+	}
+
 	
 	
 }

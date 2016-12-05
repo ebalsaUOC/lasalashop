@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import domain.EnumeratedStatus;
+import domain.OpStatus;
 import jpa.DistributorJPA;
 import jpa.BookJPA;
 
@@ -81,7 +82,7 @@ public class BookManagementImpl implements BookManagementFacade {
 	 * Add new Distributor to System
 	 */	
 	@Override
-	public String addDistributor(DistributorJPA d) {
+	public OpStatus addDistributor(DistributorJPA d) {
 		// TODO Auto-generated method stub
 		return null;
 	}

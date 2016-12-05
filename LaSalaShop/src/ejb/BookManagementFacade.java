@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import domain.OpStatus;
 import jpa.BookJPA;
 import jpa.CategoryJPA;
 import jpa.DistributorJPA;
@@ -31,7 +32,7 @@ public interface BookManagementFacade {
 	public BookJPA showBookDetailsB(long idBook); 
 	
 	//CU_L4: Add new Distributor to System
-	public String addDistributor(DistributorJPA d);
+	public OpStatus addDistributor(DistributorJPA d);
 	
 	//CU_L5: Edit a Distributor
 	public String editDistributorB(DistributorJPA d);
