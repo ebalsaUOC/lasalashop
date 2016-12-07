@@ -83,8 +83,17 @@ public class BookManagementImpl implements BookManagementFacade {
 	 */	
 	@Override
 	public OpStatus addDistributor(DistributorJPA d) {
-		// TODO Auto-generated method stub
-		return null;
+		OpStatus status = new OpStatus();
+		try{
+			entman.persist(d);
+			status.setCod("OK");
+			status.setMsg("Distributor created sucessfull");
+			return status;
+		} catch(Exception e){
+			status.setMsg("Database error creating Distributor :"+e);
+			return status;
+		}
+			
 	}
 	
 	

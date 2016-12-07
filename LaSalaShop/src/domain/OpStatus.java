@@ -13,7 +13,7 @@ public class OpStatus implements Serializable{
 	
 	public OpStatus(){
 		cod="KO";
-		msg="Error no controlado";
+		msg="Unknown error";
 	}
 
 	public String getCod() {
@@ -34,7 +34,7 @@ public class OpStatus implements Serializable{
 	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	};
+	}
 	
 		
 }
