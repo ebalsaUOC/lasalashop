@@ -19,8 +19,10 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 import javax.faces.context.FacesContext;
 
+import domain.OpStatus;
+import jpa.BookJPA;
 import jpa.DistributorJPA;
-import ejb.LibroFacadeRemote;
+import ejb.BookManagementFacade;
 
 
 /**
@@ -32,91 +34,70 @@ public class AddBookMBean implements Serializable
 	{
 	private static final long serialVersionUID = 1L;
 	@EJB
-	private LibroFacadeRemote adminRemote;
-	private  String titulo;
-	private  String autor;
-	private  String editorial;  
-	private  String isbn;
-	private double netoCompra;
-	private double pvp;
-	private int unidades;
+	private BookManagementFacade bookRemote;
 	private String distribuidora;
 	private Collection<DistributorJPA> distribuidoras = new ArrayList<DistributorJPA>();
 	private Collection<String> distribuidorasDescList = new ArrayList<String>();
+	private String errMsg;
+	private String okMsg;
 	
 	public AddBookMBean() throws Exception
 		{
 		this.distribuidorasList();
 		}
 
-	public String register(String titulo, String autor, String isbn, double precioCompra, 
-			double pvp, int unidades) throws Exception{
-//		Properties props = System.getProperties();
-//		Context ctx = new InitialContext(props);
-//		adminRemote = (AdministrationFacadeRemote) ctx.lookup("java:app/e-agenda.jar/AdministrationFacadeBean!ejb.AdministrationFacadeRemote");
-//		OpStatus op = new OpStatus();
-//		AddressJPA address = null;
-//		if (nif==null || "".equals(nif.trim()) ||
-//				name==null || "".equals(name.trim()) ||
-//				surname==null || "".equals(surname.trim()) ||
-//				country==null || "".equals(country.trim()) ||
-//				city==null || "".equals(city.trim()) ||
-//				number==null || "".equals(number.trim()) ||
-//				street==null || "".equals(street.trim()) ||
-//				password==null || "".equals(password.trim()) ||
-//				email==null || "".equals(email.trim()) 
-//				){
-//			this.errMsg = "Ompli tots els camps si us plau";
-//			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
-//			return "registerView";
-//			
-//		}
-//				
-//		// Instantiate Address
-//		try
-//			{
-//			address = new AddressJPA();
-//			address.setStreet(street);
-//			address.setCity(city);
-//			address.setCountry(country);
-//			address.setNumber(number);
-//			adminRemote.addAddress(address);
-//			}
-//		catch (Exception e)
-//			{
-//			this.errMsg = "Direccion erronea";
-//			}
-//		// Set Language
-//		List<LanguageJPA> langList = new ArrayList<>();
-//		langList.addAll(languages);
-//		// Default....
-//		LanguageJPA preferedLanguage = langList.get(0);
-//		// Try to set:
-//		for (LanguageJPA l : this.languages)
-//			{
-//			if (l.getDescription().equals(this.preferedLanguage))
-//				{
-//				preferedLanguage = l;
-//				}
-//			}
-//		UserJPA user = new UserJPA(nif, name, surname, preferedLanguage, address, password, email);
-//		op = adminRemote.register(user);
-//		
-//		if ("OK".equals(op.getCod())){
-//			FacesContext facesContext = FacesContext.getCurrentInstance();
-//			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
-//			session.setAttribute("user", user);
-//			return "headerUserView";
-//		}
-//	
-//		else
-//			{
-//			this.errMsg = op.getMsg();
-//			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
-//			return "registerView";
-//			}
-		return "Prototipo";
+	public String addBook(String title, String author, String editor,
+			String isbn, String price, String pvp,
+			String units) throws Exception	{	
+		
+		//lookup for business class
+		Properties props = System.getProperties();
+		Context ctx = new InitialContext(props);
+		bookRemote = (BookManagementFacade)ctx.lookup("java:app/lasalashop.jar/BookManagementImpl!ejb.BookMnagementFacade"); 
+		
+		//Instantiate the return object
+		OpStatus op = new OpStatus();
+		
+		//Input validations OK or ERR msg
+		if(false ){
+			//TODO: LOGICA DE VALIDACIONES
+			this.errMsg ="Rellene todos los campos por favor";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
+			return "addBookView";
+		}	
+		
+		//Parse currency
+		double priceD =0;
+		double pvpD = 0;
+		try{
+			priceD=Double.parseDouble(price);
+			pvpD=Double.parseDouble(pvp);
+		} catch(Exception e){
+			this.errMsg ="Revise los campos de percio y pvp. Formato incorrecto";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
+			return "addBookView";
 		}
+		
+		//Instantiate book to move data across layers
+		BookJPA b = new BookJPA(title, author, editor, isbn, priceD, pvpD);
+		//TODO: SET DISTRIBUTOR
+		
+		op = bookRemote.addBookB(b);
+						
+		//Parse return from business layer
+		if("OK".equals(op.getCod())){
+			this.okMsg = op.getMsg();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.okMsg));
+			//TODO:REDIRIGIR A PANTALLA MAIN
+			return "lasalashopMainTemplate";
+		}
+		
+		else{
+			this.errMsg = op.getMsg();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
+			return "addBookView";
+		}
+	}
 
 	
 
@@ -141,77 +122,14 @@ public class AddBookMBean implements Serializable
 		this.distribuidorasDescList.add("dist_2");
 		this.distribuidorasDescList.add("La Otra S.A.");
 		
-		
+		//PROBAR A CAMBIAR LA VISTA PARA QUE TRABAJE CON DISTRIBUIDORAS Y ENSEÑE SU DESCRIPCION
+		//NOS AHORRAMOS 2 PASOS
 	}
 
 	public void distribuidoraValueChanged(ValueChangeEvent distribuidoraChanged){
 		
 		this.distribuidora = distribuidoraChanged.getNewValue().toString();
 		
-	}
-
-	public LibroFacadeRemote getAdminRemote() {
-		return adminRemote;
-	}
-
-	public void setAdminRemote(LibroFacadeRemote adminRemote) {
-		this.adminRemote = adminRemote;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-
-	public String getEditorial() {
-		return editorial;
-	}
-
-	public void setEditorial(String editorial) {
-		this.editorial = editorial;
-	}
-
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	public double getNetoCompra() {
-		return netoCompra;
-	}
-
-	public void setNetoCompra(double netoCompra) {
-		this.netoCompra = netoCompra;
-	}
-
-	public double getPvp() {
-		return pvp;
-	}
-
-	public void setPvp(double pvp) {
-		this.pvp = pvp;
-	}
-
-	public int getUnidades() {
-		return unidades;
-	}
-
-	public void setUnidades(int unidades) {
-		this.unidades = unidades;
 	}
 
 	public String getDistribuidora() {
@@ -240,5 +158,29 @@ public class AddBookMBean implements Serializable
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public BookManagementFacade getBookRemote() {
+		return bookRemote;
+	}
+
+	public void setBookRemote(BookManagementFacade bookRemote) {
+		this.bookRemote = bookRemote;
+	}
+
+	public String getErrMsg() {
+		return errMsg;
+	}
+
+	public void setErrMsg(String errMsg) {
+		this.errMsg = errMsg;
+	}
+
+	public String getOkMsg() {
+		return okMsg;
+	}
+
+	public void setOkMsg(String okMsg) {
+		this.okMsg = okMsg;
 	}
 }

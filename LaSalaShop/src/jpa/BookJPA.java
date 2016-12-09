@@ -36,6 +36,18 @@ public class BookJPA implements Serializable {
 	}
 	
 		
+	public BookJPA(String title, String author, String editor, String isbn,
+			double price, double pvp) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.editor = editor;
+		this.isbn = isbn;
+		this.price = price;
+		this.pvp = pvp;
+	}
+
+
 	/**
 	 *  Methods get/set the fields of database
 	 *  Id Primary Key field

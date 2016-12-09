@@ -50,7 +50,7 @@ public class AddDistributorMBean implements Serializable{
 		
 		if(false ){
 			//TODO: LOGICA DE VALIDACIONES
-			this.errMsg ="ORellene todos los campos por favor";
+			this.errMsg ="Rellene todos los campos por favor";
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
 			return "addDistributorView";
 		}	
@@ -63,7 +63,7 @@ public class AddDistributorMBean implements Serializable{
 			this.okMsg = op.getMsg();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.okMsg));
 			//TODO:REDIRIGIR A PANTALLA MAIN
-			return "sendCommentView";
+			return "lasalashopMainTemplate";
 		}
 		
 		else{

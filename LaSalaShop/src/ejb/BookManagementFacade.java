@@ -17,7 +17,7 @@ import jpa.DistributorJPA;
 public interface BookManagementFacade {
 
 	//CU_L1: Add new book to System
-	public String addBookB(BookJPA b);
+	public OpStatus addBookB(BookJPA b);
 	
 	//AUX_M: List all Distributors stored 
 	public Collection<DistributorJPA> listAllDistributorsB();

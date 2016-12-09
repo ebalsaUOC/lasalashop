@@ -32,7 +32,7 @@ public class BookManagementImpl implements BookManagementFacade {
 	 * Adds new Book to System
 	 */	
 	@Override
-	public String addBookB(BookJPA b) {
+	public OpStatus addBookB(BookJPA b) {
 		// TODO Auto-generated method stub
 		return null;
 	}

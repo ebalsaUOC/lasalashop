@@ -13,7 +13,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.event.ValueChangeEvent;
 import javax.naming.NamingException;
 import jpa.DistributorJPA;
-import ejb.LibroFacadeRemote;
 
 
 /**

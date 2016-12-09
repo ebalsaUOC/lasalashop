@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
 import javax.faces.context.FacesContext;
 
 import jpa.DistributorJPA;
-import ejb.LibroFacadeRemote;
 
 
 /**
