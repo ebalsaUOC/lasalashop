@@ -13,7 +13,7 @@
 	<ui:define name="content">
 		<h1>Inserta un nuevo libro:</h1>
 		<h:form align="center">	
-		<h:selectOneMenu  valueChangeListener="#{addBookMBean.distribuidoraValueChanged}" value="#{addBookMBean.distribuidora}" immediate="true"
+		<h:selectOneMenu  valueChangeListener="#{addBookMBean.distributorValueChanged}" value="#{addBookMBean.distributor}" immediate="true"
 			style="	
 				display: block;
 				width: 33%;
@@ -25,7 +25,7 @@
     	    	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
             	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
             	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; " >
-		<f:selectItems value="#{addBookMBean.distribuidorasDescList}" />
+		<f:selectItems value="#{addBookMBean.distributorsDescList}" />
 		</h:selectOneMenu>
 		<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
 				<h:outputLabel value="Título:"/>

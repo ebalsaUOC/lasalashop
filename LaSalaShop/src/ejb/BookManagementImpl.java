@@ -33,8 +33,17 @@ public class BookManagementImpl implements BookManagementFacade {
 	 */	
 	@Override
 	public OpStatus addBookB(BookJPA b) {
-		// TODO Auto-generated method stub
-		return null;
+		OpStatus status = new OpStatus();
+		try{
+			entman.persist(b);
+			status.setCod("OK");
+			status.setMsg("Book created sucessfull");
+			return status;
+		} catch(Exception e){
+			status.setMsg("Database error creating Book :"+e);
+			return status;
+		}
+			
 	}
 
 	
@@ -43,7 +52,7 @@ public class BookManagementImpl implements BookManagementFacade {
 	 */	
 	@Override
 	public Collection<DistributorJPA> listAllDistributorsB() {
-		// TODO Auto-generated method stub
+		// TODO Query de tipo JPA que retorne todas las entidades de la tabla
 		return null;
 	}
 	

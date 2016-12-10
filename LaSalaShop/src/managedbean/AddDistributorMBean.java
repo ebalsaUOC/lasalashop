@@ -29,7 +29,6 @@ import ejb.BookManagementFacade;
 public class AddDistributorMBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
 	@EJB
 	private BookManagementFacade bookRemote;
 	private String errMsg;

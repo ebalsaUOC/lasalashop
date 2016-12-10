@@ -15,10 +15,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.servlet.http.HttpSession;
-import javax.faces.context.FacesContext;
-
 import domain.OpStatus;
 import jpa.BookJPA;
 import jpa.DistributorJPA;
@@ -35,16 +31,17 @@ public class AddBookMBean implements Serializable
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private BookManagementFacade bookRemote;
-	private String distribuidora;
-	private Collection<DistributorJPA> distribuidoras = new ArrayList<DistributorJPA>();
-	private Collection<String> distribuidorasDescList = new ArrayList<String>();
+	private String distributor;
+	private Collection<DistributorJPA> distributors = new ArrayList<DistributorJPA>();
+	private Collection<String> distributorsDescList = new ArrayList<String>();
 	private String errMsg;
 	private String okMsg;
 	
-	public AddBookMBean() throws Exception
-		{
-		this.distribuidorasList();
-		}
+	public AddBookMBean() throws Exception{
+		
+		//Get Distributors description onLoad
+		distributorsDescList();	
+	}
 
 	public String addBook(String title, String author, String editor,
 			String isbn, String price, String pvp,
@@ -80,8 +77,16 @@ public class AddBookMBean implements Serializable
 		
 		//Instantiate book to move data across layers
 		BookJPA b = new BookJPA(title, author, editor, isbn, priceD, pvpD);
-		//TODO: SET DISTRIBUTOR
+		//Select Distributor form inner list and set
+		DistributorJPA distToSet = null;
+		for(DistributorJPA d: this.distributors){
+			if(d.getName().equalsIgnoreCase(this.distributor)){
+				distToSet=d;
+			}
+		}
+		b.setDistributor(distToSet);
 		
+		//Call Business to store Book
 		op = bookRemote.addBookB(b);
 						
 		//Parse return from business layer
@@ -101,8 +106,7 @@ public class AddBookMBean implements Serializable
 
 	
 
-	private void distribuidorasList() throws NamingException
-		{
+	private void distributorsDescList(){
 		//PAra la version definitiva, recogemos de la BBDD las distribuidoras, y creamos dos listas, 
 		//una con las distribuidoras en si, y otra con el nombre para pasarla a la vista.
 //		Properties props = System.getProperties();
@@ -118,43 +122,24 @@ public class AddBookMBean implements Serializable
 //				}
 //			}
 		//Para los prototipos creamos las listas de descripciones en el mBean
-		this.distribuidorasDescList.add("DISTRIB_1");
-		this.distribuidorasDescList.add("dist_2");
-		this.distribuidorasDescList.add("La Otra S.A.");
+		this.distributorsDescList.add("DISTRIB_1");
+		this.distributorsDescList.add("dist_2");
+		this.distributorsDescList.add("La Otra S.A.");
 		
-		//PROBAR A CAMBIAR LA VISTA PARA QUE TRABAJE CON DISTRIBUIDORAS Y ENSEÑE SU DESCRIPCION
-		//NOS AHORRAMOS 2 PASOS
+		//TODO: CODIFICAR PARA QUE CARGUE LAS DIST DESDE NEGOCIO, Y PASE LAS DESCRIPCIONES A LA LISTA
+
 	}
 
-	public void distribuidoraValueChanged(ValueChangeEvent distribuidoraChanged){
+	public void distributorValueChanged(ValueChangeEvent distributorChanged){
 		
-		this.distribuidora = distribuidoraChanged.getNewValue().toString();
+		this.distributor = distributorChanged.getNewValue().toString();
 		
 	}
 
-	public String getDistribuidora() {
-		return distribuidora;
+	public String getDistributor() {
+		return distributor;
 	}
 
-	public void setDistribuidora(String distribuidora) {
-		this.distribuidora = distribuidora;
-	}
-
-	public Collection<DistributorJPA> getDistribuidoras() {
-		return distribuidoras;
-	}
-
-	public void setDistribuidoras(Collection<DistributorJPA> distribuidoras) {
-		this.distribuidoras = distribuidoras;
-	}
-
-	public Collection<String> getDistribuidorasDescList() {
-		return distribuidorasDescList;
-	}
-
-	public void setDistribuidorasDescList(Collection<String> distrivuidorasDescList) {
-		this.distribuidorasDescList = distrivuidorasDescList;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -182,5 +167,25 @@ public class AddBookMBean implements Serializable
 
 	public void setOkMsg(String okMsg) {
 		this.okMsg = okMsg;
+	}
+
+	public Collection<DistributorJPA> getDistributors() {
+		return distributors;
+	}
+
+	public void setDistributors(Collection<DistributorJPA> distributors) {
+		this.distributors = distributors;
+	}
+
+	public Collection<String> getDistributorsDescList() {
+		return distributorsDescList;
+	}
+
+	public void setDistributorsDescList(Collection<String> distributorsDescList) {
+		this.distributorsDescList = distributorsDescList;
+	}
+
+	public void setDistributor(String distributor) {
+		this.distributor = distributor;
 	}
 }

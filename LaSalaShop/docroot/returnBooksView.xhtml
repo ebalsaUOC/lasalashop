@@ -10,7 +10,7 @@
 	<ui:define name="content">
 		<h1>Preparar devolución:</h1>
 		<h:form align="center">	
-		<h:selectOneMenu  valueChangeListener="#{addBookMBean.distribuidoraValueChanged}" value="#{addBookMBean.distribuidora}" immediate="true"
+		<h:selectOneMenu  valueChangeListener="#{returnBooksMBean.distribuidoraValueChanged}" value="#{returnBooksMBean.distributor}" immediate="true"
 					style="
 				display: block;
 				width: 33%;
@@ -22,7 +22,7 @@
     	    	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
             	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
             	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; " >
-		<f:selectItems value="#{addBookMBean.distribuidorasDescList}" />
+		<f:selectItems value="#{addBookMBean.distributorsDescList}" />
 		</h:selectOneMenu>
 	<h:dataTable value="#{returnBooksMBean.booksListView}" var="book" border="1" first="0" width="80%" frame="none" rules="all"  >
      
