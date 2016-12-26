@@ -8,7 +8,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="lasalashop.category")
-public class CategoryJPA implements Serializable {
+public class CategoryPrototypeJPA implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +20,7 @@ public class CategoryJPA implements Serializable {
 	 * Class constructor methods
 	 */
 		
-	public CategoryJPA() {		
+	public CategoryPrototypeJPA() {		
 		this.id=getId();		
 	}
 	

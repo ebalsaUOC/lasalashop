@@ -15,6 +15,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import domain.OpStatus;
 import jpa.BookJPA;
 import jpa.DistributorJPA;
@@ -50,18 +52,22 @@ public class AddBookMBean implements Serializable
 		//lookup for business class
 		Properties props = System.getProperties();
 		Context ctx = new InitialContext(props);
-		bookRemote = (BookManagementFacade)ctx.lookup("java:app/lasalashop.jar/BookManagementImpl!ejb.BookMnagementFacade"); 
+		bookRemote = (BookManagementFacade)ctx.lookup("java:app/lasalashop.jar/BookManagementImpl!ejb.BookManagementFacade"); 
 		
 		//Instantiate the return object
 		OpStatus op = new OpStatus();
 		
 		//Input validations OK or ERR msg
 		if(false ){
-			//TODO: LOGICA DE VALIDACIONES
+			//TODO: CREATE ALL VALIDATION LOGIC HERE
 			this.errMsg ="Rellene todos los campos por favor";
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
 			return "addBookView";
-		}	
+		} else if(this.distributor==null){
+			this.errMsg ="ACCION NO DISPONIBLE: Es necesario crear alguna Distribuidora en el sistema previamente";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
+			return "addBookView";
+		}
 		
 		//Parse currency
 		double priceD =0;
@@ -77,6 +83,7 @@ public class AddBookMBean implements Serializable
 		
 		//Instantiate book to move data across layers
 		BookJPA b = new BookJPA(title, author, editor, isbn, priceD, pvpD);
+		b.setCopy(Integer.valueOf(units));
 		//Select Distributor form inner list and set
 		DistributorJPA distToSet = null;
 		for(DistributorJPA d: this.distributors){
@@ -93,7 +100,7 @@ public class AddBookMBean implements Serializable
 		if("OK".equals(op.getCod())){
 			this.okMsg = op.getMsg();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.okMsg));
-			//TODO:REDIRIGIR A PANTALLA MAIN
+			//Redirect to main
 			return "lasalashopMainTemplate";
 		}
 		
@@ -106,28 +113,18 @@ public class AddBookMBean implements Serializable
 
 	
 
-	private void distributorsDescList(){
-		//PAra la version definitiva, recogemos de la BBDD las distribuidoras, y creamos dos listas, 
-		//una con las distribuidoras en si, y otra con el nombre para pasarla a la vista.
-//		Properties props = System.getProperties();
-//		Context ctx = new InitialContext(props);
-//		distribuidirasRemote = (DiistribuidorasFacadeRemote) ctx.lookup("java:app/e-agenda.jar/AdministrationFacadeBean!ejb.AdministrationFacadeRemote");
-//		Collection<LanguageJPA> languageCollection = (Collection<LanguageJPA>) adminRemote.listLanguages();
-//		this.languages = languageCollection;
-//		if (this.languages != null && this.languages.size() > 0)
-//			{
-//			for (LanguageJPA l : this.languages)
-//				{
-//				this.languagesDescList.add(l.getDescription());
-//				}
-//			}
-		//Para los prototipos creamos las listas de descripciones en el mBean
-		this.distributorsDescList.add("DISTRIB_1");
-		this.distributorsDescList.add("dist_2");
-		this.distributorsDescList.add("La Otra S.A.");
+	private void distributorsDescList() throws Exception{
+		//We manage 2 different lists. One to store the system Distributors and other to contains the name descriptor to show in the view
+		//lookup for business class
+		Properties props = System.getProperties();
+		Context ctx = new InitialContext(props);
+		bookRemote = (BookManagementFacade)ctx.lookup("java:app/lasalashop.jar/BookManagementImpl!ejb.BookManagementFacade"); 
 		
-		//TODO: CODIFICAR PARA QUE CARGUE LAS DIST DESDE NEGOCIO, Y PASE LAS DESCRIPCIONES A LA LISTA
-
+		this.distributors = bookRemote.listAllDistributorsB();
+		
+		for(DistributorJPA d: this.distributors){
+			this.distributorsDescList.add(d.getName());
+		}
 	}
 
 	public void distributorValueChanged(ValueChangeEvent distributorChanged){

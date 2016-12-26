@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import domain.EnumeratedStatus;
 import domain.OpStatus;
@@ -35,14 +36,32 @@ public class BookManagementImpl implements BookManagementFacade {
 	public OpStatus addBookB(BookJPA b) {
 		OpStatus status = new OpStatus();
 		try{
-			entman.persist(b);
-			status.setCod("OK");
-			status.setMsg("Book created sucessfull");
-			return status;
+			
+			//Create one instance for each copy
+			int units = b.getCopy();
+			int copy = 1;
+			while (copy<=units){
+				BookJPA bookToPersists = new BookJPA();
+				bookToPersists.setAuthor(b.getAuthor());
+				bookToPersists.setEditor(b.getEditor());
+				bookToPersists.setIsbn(b.getIsbn());
+				bookToPersists.setPrice(b.getPrice());
+				bookToPersists.setPvp(b.getPvp());
+				bookToPersists.setStatus(EnumeratedStatus.AVAILABLE);
+				bookToPersists.setCopy(copy);
+				bookToPersists.setTitle(b.getTitle());
+				bookToPersists.setDistributor(b.getDistributor());
+				copy++;
+				entman.persist(bookToPersists);
+			}
 		} catch(Exception e){
 			status.setMsg("Database error creating Book :"+e);
 			return status;
 		}
+		
+		status.setCod("OK");
+		status.setMsg("Book created sucessfull");
+		return status;
 			
 	}
 
@@ -52,8 +71,10 @@ public class BookManagementImpl implements BookManagementFacade {
 	 */	
 	@Override
 	public Collection<DistributorJPA> listAllDistributorsB() {
-		// TODO Query de tipo JPA que retorne todas las entidades de la tabla
-		return null;
+		// JPQL Query to fetch all entities from distributors table
+		Query query = entman.createQuery("SELECT d FROM DistributorJPA d" );
+		Collection<DistributorJPA> distributorsList = query.getResultList();
+		return distributorsList;
 	}
 	
 	

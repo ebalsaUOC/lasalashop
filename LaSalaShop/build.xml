@@ -45,7 +45,7 @@
    	<copy file="${sourcesrc}/META-INF/persistence.xml" todir="${buildjar}/META-INF"/>
    	<copy file="${sourcesrc}/log4j.properties" todir="${buildjar}"/>
    <javac srcdir="${sourcesrc}" destdir="${buildjar}"
-       	includes="/ejb/*.java, /jpa/*.java"
+       	includes="/ejb/*.java, /jpa/*.java, /domain/*.java"
         classpathref="jboss.classpath"   
     	includeantruntime="true"
     />
@@ -56,7 +56,7 @@
   	<copy todir="${buildwar}">
   		<fileset dir="${source}/docroot"/>
 	</copy>
- 	<javac srcdir="${sourcesrc}" destdir="${buildwar}/WEB-INF/classes" includes="/managedbean/*.java"
+ 	<javac srcdir="${sourcesrc}" destdir="${buildwar}/WEB-INF/classes" includes="/managedbean/*.java, /jpa/*.java, /domain/*.java"
         classpathref="jboss.classpath"   
     	includeantruntime="true"
 	/>
@@ -72,10 +72,10 @@
   </target>
  
   <!-- Update the WAR file and create if not exist -->
+  <!--      excludes="/WEB-INF/classes/ejb/*.*, /WEB-INF/classes/jpa/*.*"  -->
   <target name="deployClient" depends="compileWar">
     <jar jarfile="${dist}/lasalashop.war"
       basedir="${buildwar}"
-      excludes="/WEB-INF/classes/ejb/*.*, /WEB-INF/classes/jpa/*.*"
       update="yes">
     </jar>
   </target>

@@ -7,7 +7,6 @@ import javax.ejb.Remote;
 
 import domain.OpStatus;
 import jpa.BookJPA;
-import jpa.CategoryJPA;
 import jpa.DistributorJPA;
 
 /**

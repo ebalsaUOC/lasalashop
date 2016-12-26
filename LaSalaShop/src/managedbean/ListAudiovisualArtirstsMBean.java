@@ -5,7 +5,7 @@ import java.util.*;
 import javax.faces.model.SelectItem;
 import javax.faces.bean.*;
 
-import jpa.ArtistJPA;
+import jpa.ArtistPrototypeJPA;
 import jpa.BookJPA;
 
 
@@ -20,7 +20,7 @@ public class ListAudiovisualArtirstsMBean {
 	
 	//@EJB private CategoryFacadeRemote categories;
 //	protected Collection<SelectItem> booksList = new ArrayList<SelectItem>();
-	protected Collection<ArtistJPA> artistsListView;
+	protected Collection<ArtistPrototypeJPA> artistsListView;
 	
 	public ListAudiovisualArtirstsMBean() throws Exception
 	{
@@ -37,7 +37,7 @@ public class ListAudiovisualArtirstsMBean {
 //	}
 	
 	
-	public Collection<ArtistJPA> getArtistsListView() throws Exception
+	public Collection<ArtistPrototypeJPA> getArtistsListView() throws Exception
 	{		
 //		Properties props = System.getProperties();
 //		Context ctx = new InitialContext(props);
@@ -47,18 +47,18 @@ public class ListAudiovisualArtirstsMBean {
 //		return categoryListView;	
 		
 		//CODIGO PARA EL PROTOTIPO:
-		Collection<ArtistJPA> ArtistsListView = new ArrayList<ArtistJPA>();
+		Collection<ArtistPrototypeJPA> ArtistsListView = new ArrayList<ArtistPrototypeJPA>();
 		
-		ArtistJPA a1 = new ArtistJPA("Albert", "Gonzalez", "98784563541");
-		ArtistJPA a2 = new ArtistJPA("John", "Smith", "83-123456789");
-		ArtistJPA a3 = new ArtistJPA("Tino", "Gonzalez", "9878-4563541");
-		ArtistJPA a4 = new ArtistJPA("Susana", "Ninez", "9878456-3541");
-		ArtistJPA a5 = new ArtistJPA("Maria", "Garcia", "98-7-84-56 35-41");
-		ArtistJPA a6 = new ArtistJPA("John", "Gonzalez", "98784563541");
-		ArtistJPA a7 = new ArtistJPA("Nombremuylargo", "Apellido-muy-largo", "98784563541");
-		ArtistJPA a8 = new ArtistJPA("Pepe", "Perez", "98745663541");
-		ArtistJPA a9 = new ArtistJPA("Albert", "Lee", "989-756-73541");
-		ArtistJPA a10 = new ArtistJPA("Mike", "Doe", "98784654541");
+		ArtistPrototypeJPA a1 = new ArtistPrototypeJPA("Albert", "Gonzalez", "98784563541");
+		ArtistPrototypeJPA a2 = new ArtistPrototypeJPA("John", "Smith", "83-123456789");
+		ArtistPrototypeJPA a3 = new ArtistPrototypeJPA("Tino", "Gonzalez", "9878-4563541");
+		ArtistPrototypeJPA a4 = new ArtistPrototypeJPA("Susana", "Ninez", "9878456-3541");
+		ArtistPrototypeJPA a5 = new ArtistPrototypeJPA("Maria", "Garcia", "98-7-84-56 35-41");
+		ArtistPrototypeJPA a6 = new ArtistPrototypeJPA("John", "Gonzalez", "98784563541");
+		ArtistPrototypeJPA a7 = new ArtistPrototypeJPA("Nombremuylargo", "Apellido-muy-largo", "98784563541");
+		ArtistPrototypeJPA a8 = new ArtistPrototypeJPA("Pepe", "Perez", "98745663541");
+		ArtistPrototypeJPA a9 = new ArtistPrototypeJPA("Albert", "Lee", "989-756-73541");
+		ArtistPrototypeJPA a10 = new ArtistPrototypeJPA("Mike", "Doe", "98784654541");
 		
 		ArtistsListView.add(a1);
 		ArtistsListView.add(a2);

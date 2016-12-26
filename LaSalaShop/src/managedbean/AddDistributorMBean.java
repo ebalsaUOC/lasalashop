@@ -14,8 +14,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.servlet.http.HttpSession;
-
 import jpa.DistributorJPA;
 import domain.OpStatus;
 import ejb.BookManagementFacade;
@@ -43,7 +41,7 @@ public class AddDistributorMBean implements Serializable{
 		
 		Properties props = System.getProperties();
 		Context ctx = new InitialContext(props);
-		bookRemote = (BookManagementFacade)ctx.lookup("java:app/lasalashop.jar/BookManagementImpl!ejb.BookMnagementFacade"); 
+		bookRemote = (BookManagementFacade)ctx.lookup("java:app/lasalashop.jar/BookManagementImpl!ejb.BookManagementFacade"); 
 		
 		OpStatus op = new OpStatus();
 		
