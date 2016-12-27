@@ -16,8 +16,12 @@
 		<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
 				<h:outputLabel value="TITULO:"/>
 				<h:inputText value="tiltulo" binding="#{input1}" /> 
+				<h:outputLabel value="AUTOR:"/>
+				<h:inputText value="autor" binding="#{input2}" /> 
+				<h:outputLabel value="ISBN:"/>
+				<h:inputText value="isbn" binding="#{input3}" /> 
 		</h:panelGrid>
-		<h:commandButton value="BUSCAR" action="#{searchBookMBean.search(input1.value)}" />
+		<h:commandButton value="BUSCAR" action="#{listBooksResultMBean.bookSearch(input1.value, input2.value, input3.value)}" />
 		<h:messages styleClass="display-error" />
 		</h:form>
 	</ui:define>

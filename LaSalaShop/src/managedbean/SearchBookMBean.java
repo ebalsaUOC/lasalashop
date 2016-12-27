@@ -11,7 +11,11 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ValueChangeEvent;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.naming.NamingException;
+
+import ejb.BookManagementFacade;
 import jpa.DistributorJPA;
 
 
@@ -20,19 +24,39 @@ import jpa.DistributorJPA;
  */
 @ManagedBean(name = "searchBookMBean")
 @SessionScoped
-public class SearchBookMBean implements Serializable
-	{
+public class SearchBookMBean implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
-//	@EJB
-//	private LibroFacadeRemote bookRemote;
+	@EJB
+	private BookManagementFacade bookRemote;
 	
-	public SearchBookMBean() throws Exception
-		{
+	public SearchBookMBean() throws Exception{
 	
+	}
+
+	public String search(String name, String author, String isbn) throws Exception{
+		//lookup for business class
+		Properties props = System.getProperties();
+		Context ctx = new InitialContext(props);
+		bookRemote = (BookManagementFacade)ctx.lookup("java:app/lasalashop.jar/BookManagementImpl!ejb.BookManagementFacade"); 
+		
+		List<String> filters = new ArrayList<String>();
+		String searchText="";
+		
+		//Select search criteria:
+		if(name!=null && !"".equalsIgnoreCase(name.trim())){
+			filters.add("NAME");
+			searchText=name;
+		} else if (author!=null && !"".equalsIgnoreCase(author.trim())){
+			filters.add("AUTHOR");
+			searchText=author;
+		} else {
+			filters.add("ISBN");
+			searchText=isbn;
 		}
-
-	public String search(String s) throws Exception{
-
+	
+		
+		
 		return "ListBooksResultView";
 	}
 
