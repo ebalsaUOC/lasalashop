@@ -15,8 +15,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 import domain.OpStatus;
 import jpa.BookJPA;
 import jpa.DistributorJPA;

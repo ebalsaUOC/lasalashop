@@ -20,13 +20,15 @@
           <f:facet name="header">PVP</f:facet> 
           <h:outputText value="#{book.pvp}"/>
      </h:column>
-     <h:column>
-        <h:selectBooleanCheckbox value="#{bean.checked[item.id]}" />
+     <h:column align="center">
+         <h:commandButton value="Ver" action="bookDetailView" actionListener="#{bookDetailMBean.showBook(book)}" immediate="true"/>          	                
+     </h:column>
+     <h:column align="center">
+     	  <h:commandButton value="Editar" action="bookEditView" actionListener="#{bookEditMBean.showBook(book)}" immediate="true"/>                             
      </h:column>
      
     </h:dataTable> 
-		<h:commandButton value="SELECCIONAR"  style="
-			    						width:80%;" />
+	
 		<h:messages styleClass="display-error" />
 		</h:form>
 	</ui:define>

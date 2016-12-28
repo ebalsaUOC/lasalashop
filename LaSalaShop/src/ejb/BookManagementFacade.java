@@ -25,7 +25,7 @@ public interface BookManagementFacade {
 	public Collection<BookJPA> searchBookB(String searchText, List<String> filters); 
 	
 	//CU_L3: Edit a Book
-	public String editBookB(BookJPA b);
+	public OpStatus editBookB(BookJPA b);
 	
 	//AUX_M: Show book details for a given id
 	public BookJPA showBookDetailsB(long idBook); 

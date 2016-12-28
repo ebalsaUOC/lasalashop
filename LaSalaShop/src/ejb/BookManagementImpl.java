@@ -111,7 +111,7 @@ public class BookManagementImpl implements BookManagementFacade {
 	 * Edit a Book
 	 */		
 	@Override
-	public String editBookB(BookJPA b) {
+	public OpStatus editBookB(BookJPA b) {
 		// TODO Auto-generated method stub
 		return null;
 	}

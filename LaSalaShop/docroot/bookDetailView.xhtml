@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+
+<ui:composition template="./lasalashopMainTemplate.xhtml">
+	<ui:param name="header_nav_login" value="tab_selected" />
+	<ui:param name="page_title" value="Detalle de libro" />
+	<ui:define name="content">
+		<h1>Detalle de libro:</h1>
+		<h:form align="center">	
+		<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
+				<h:outputLabel value="Título:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.title}" /> 
+				<h:outputLabel value="Autor:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.author}" /> 
+		</h:panelGrid>
+			<h:commandButton value="VOLVER" />
+		<h:messages styleClass="display-error" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
