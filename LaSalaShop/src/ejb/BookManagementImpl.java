@@ -1,5 +1,6 @@
 package ejb;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -84,9 +85,26 @@ public class BookManagementImpl implements BookManagementFacade {
 	@Override
 	public Collection<BookJPA> searchBookB(String searchText,
 			List<String> filters) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String filter = filters.get(0);
+		//Select query type:
+		String sQuery = "";
+		if("TITLE".equalsIgnoreCase(filter)){
+			sQuery="SELECT b FROM BookJPA b WHERE LOWER(b.title) LIKE :par";
+		} else if(("AUTHOR".equalsIgnoreCase(filter))){
+			sQuery="SELECT b FROM BookJPA b WHERE LOWER(b.author) LIKE :par";				
+		} else {
+			sQuery="SELECT b FROM BookJPA b WHERE LOWER(b.isbn) LIKE :par";
+		}
+		
+		//Set parameter and run query
+		sQuery = sQuery.replace(":par", "'%"+searchText.toLowerCase().trim()+"%'");
+		Query query = entman.createQuery(sQuery);	
+		Collection<BookJPA> resultList=query.getResultList();
+
+		return resultList;
 	}
+	
 
 	
 	/**

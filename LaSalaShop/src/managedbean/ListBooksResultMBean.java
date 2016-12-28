@@ -43,7 +43,7 @@ public class ListBooksResultMBean {
 		
 		//Select search criteria:
 		if(name!=null && !"".equalsIgnoreCase(name.trim())){
-			filters.add("NAME");
+			filters.add("TITLE");
 			searchText=name;
 		} else if (author!=null && !"".equalsIgnoreCase(author.trim())){
 			filters.add("AUTHOR");
@@ -52,11 +52,15 @@ public class ListBooksResultMBean {
 			filters.add("ISBN");
 			searchText=isbn;
 		}
-		
-		
-		//TODO:RECUPERAR DE BUSINES, LLENAR LISTA PROPIA
-		
-		return "ListBooksResultView";
+				
+		//Get Books from business layer
+		this.booksListView = new ArrayList<BookJPA>();
+		Collection<BookJPA> resultList= bookRemote.searchBookB(searchText, filters);
+		if(resultList!=null){
+			this.booksListView=resultList;
+		}
+	
+		return "listBooksResultView";
 	}
 
 	public BookManagementFacade getBookRemote() {
