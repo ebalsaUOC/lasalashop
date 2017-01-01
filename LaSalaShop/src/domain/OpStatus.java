@@ -2,8 +2,6 @@ package domain;
 
 import java.io.Serializable;
 
-import jpaEx.UserJPA;
-
 public class OpStatus implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

@@ -18,6 +18,18 @@
 				<h:outputText value="#{bookDetailMBean.dataBook.title}" /> 
 				<h:outputLabel value="Autor:"/>
 				<h:outputText value="#{bookDetailMBean.dataBook.author}" /> 
+				<h:outputLabel value="Editorial:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.editor}" /> 
+				<h:outputLabel value="ISBN:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.isbn}" /> 
+				<h:outputLabel value="Precio compra:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.price}" /> 
+				<h:outputLabel value="PVP:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.pvp}" /> 
+				<h:outputLabel value="Distribuidora:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.distributor.name}" /> 
+				<h:outputLabel value="Estado:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.status}" /> 
 		</h:panelGrid>
 			<h:commandButton value="VOLVER" />
 		<h:messages styleClass="display-error" />

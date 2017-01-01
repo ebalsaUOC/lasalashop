@@ -18,6 +18,18 @@
 				<h:inputText value="#{bookEditMBean.dataBook.title}" binding="#{input1}" /> 
 				<h:outputLabel value="Autor:"/>
 				<h:inputText value="#{bookEditMBean.dataBook.author}" binding="#{input2}" /> 
+				<h:outputLabel value="Editorial:"/>
+				<h:inputText value="#{bookDetailMBean.dataBook.editor}" /> 
+				<h:outputLabel value="ISBN:"/>
+				<h:inputText value="#{bookDetailMBean.dataBook.isbn}" /> 
+				<h:outputLabel value="Precio compra:"/>
+				<h:inputText value="#{bookDetailMBean.dataBook.price}" /> 
+				<h:outputLabel value="PVP:"/>
+				<h:inputText value="#{bookDetailMBean.dataBook.pvp}" /> 
+				<h:outputLabel value="Distribuidora:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.distributor.name}" /> 
+				<h:outputLabel value="Estado:"/>
+				<h:outputText value="#{bookDetailMBean.dataBook.status}" /> 
 		</h:panelGrid>
 			<h:commandButton value="VOLVER" />
 			<h:commandButton value="GUARDAR" />
