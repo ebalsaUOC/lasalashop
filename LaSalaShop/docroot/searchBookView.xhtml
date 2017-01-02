@@ -22,6 +22,7 @@
 				<h:inputText value=" " binding="#{input3}" /> 
 		</h:panelGrid>
 		<h:commandButton value="BUSCAR" action="#{listBooksResultMBean.bookSearch(input1.value, input2.value, input3.value)}" />
+		<h:commandButton  value="VOLVER" action="booksMainView.xhtml" />
 		<h:messages styleClass="display-error" />
 		</h:form>
 	</ui:define>

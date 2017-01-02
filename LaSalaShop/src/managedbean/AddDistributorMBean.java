@@ -59,8 +59,8 @@ public class AddDistributorMBean implements Serializable{
 		if("OK".equals(op.getCod())){
 			this.okMsg = op.getMsg();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.okMsg));
-			//TODO:REDIRIGIR A PANTALLA MAIN
-			return "lasalashopMainTemplate";
+		
+			return "booksMainView";
 		}
 		
 		else{

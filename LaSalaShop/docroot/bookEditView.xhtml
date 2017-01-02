@@ -19,20 +19,20 @@
 				<h:outputLabel value="Autor:"/>
 				<h:inputText value="#{bookEditMBean.dataBook.author}" binding="#{input2}" /> 
 				<h:outputLabel value="Editorial:"/>
-				<h:inputText value="#{bookDetailMBean.dataBook.editor}" /> 
+				<h:inputText value="#{bookEditMBean.dataBook.editor}" binding="#{input3}"/> 
 				<h:outputLabel value="ISBN:"/>
-				<h:inputText value="#{bookDetailMBean.dataBook.isbn}" /> 
+				<h:inputText value="#{bookEditMBean.dataBook.isbn}" binding="#{input4}" /> 
 				<h:outputLabel value="Precio compra:"/>
-				<h:inputText value="#{bookDetailMBean.dataBook.price}" /> 
+				<h:inputText value="#{bookEditMBean.dataBook.price}" binding="#{input5}" /> 
 				<h:outputLabel value="PVP:"/>
-				<h:inputText value="#{bookDetailMBean.dataBook.pvp}" /> 
+				<h:inputText value="#{bookEditMBean.dataBook.pvp}" binding="#{input6}"/> 
 				<h:outputLabel value="Distribuidora:"/>
-				<h:outputText value="#{bookDetailMBean.dataBook.distributor.name}" /> 
+				<h:outputText value="#{bookEditMBean.dataBook.distributor.name}" /> 
 				<h:outputLabel value="Estado:"/>
-				<h:outputText value="#{bookDetailMBean.dataBook.status}" /> 
+				<h:outputText value="#{bookEditMBean.dataBook.status}" /> 
 		</h:panelGrid>
-			<h:commandButton value="VOLVER" />
-			<h:commandButton value="GUARDAR" />
+			<h:commandButton  value="EDITAR" action="#"  />
+			<h:commandButton  value="VOLVER" action="listBooksResultView.xhtml" />
 		<h:messages styleClass="display-error" />
 		</h:form>
 	</ui:define>

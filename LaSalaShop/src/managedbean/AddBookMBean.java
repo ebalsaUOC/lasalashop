@@ -96,10 +96,10 @@ public class AddBookMBean implements Serializable
 						
 		//Parse return from business layer
 		if("OK".equals(op.getCod())){
-			this.okMsg = op.getMsg();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.okMsg));
+			this.errMsg = op.getMsg();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("LIBRO GUARDADO CORRECTAMENTE"));
 			//Redirect to main
-			return "lasalashopMainTemplate";
+			  return "addBookView";
 		}
 		
 		else{
