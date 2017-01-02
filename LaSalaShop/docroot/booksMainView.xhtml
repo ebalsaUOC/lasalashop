@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:composition template="./lasalashopMainTemplate.xhtml">
+  	<!-- Parametros de UI -->
+	<ui:param name="header_nav_events" value="tab_selected" />
+	<ui:param name="page_title" value="lasala shop libros" />
+	<ui:define name="content">
+		<div id="panel">
+			<img src="resources/images/bookshop.jpg" alt="book shop" height="352" width="528"/>
+		</div>
+		<div id="content">
+			<h1 style="font: normal 200% century gothic, arial, sans-serif ;color: #00B2FC">GESTION DE LIBROS</h1>
+		</div>
+
+					    <section class="main">
+					        <section class="wrap">
+					            <aside>
+					                <div class="widget">
+					                    <div class="us_wrapper us_fan_count_wrapper">
+					                        <div class="us_fan_count rows-3">
+					                            <a class="us_facebook_fan_count_link" href="addBookView.xhtml">
+					                                <div class="us_facebook_fan_count us_fan_count_button">
+					                                    <div class="us_fan_count_icon_holder">
+					                                        <i class="us-icon-facebook"></i>
+					                                    </div>
+					                                    <div class="us_fan_count_desc">Alta Libros</div>
+					                                </div>
+					                            </a>
+					                        </div><div class="us_fan_count rows-3">
+					                            <a class="us_twitter_fan_count_link" href="searchBookView.xhtml">
+					                                <div class="us_twitter_fan_count us_fan_count_button">
+					                                    <div class="us_fan_count_icon_holder"><i class="us-icon-twitter"></i></div>
+					                                    <div class="us_fan_count_desc">Buscar Libro</div>
+					                                </div>
+					                            </a>
+					                        </div>
+					                        <div class="us_fan_count rows-3">
+					                            <a class="us_google_fan_count_link" href="addDistributorView.xhtml">
+					                                <div class="us_google_fan_count us_fan_count_button">
+					                                    <div class="us_fan_count_icon_holder"><i class="us-icon-google"></i></div>
+					                                    <div class="us_fan_count_desc">Alta Distribuidora</div>
+					                                </div>
+					                            </a>
+					                        </div><div class="us_fan_count rows-3">
+					                            <a class="us_pinterest_fan_count_link" href="returnBooksView.xhtml">
+					                                <div class="us_pinterest_fan_count us_fan_count_button">
+					                                    <div class="us_fan_count_icon_holder"><i class="us-icon-pinterest"></i></div>					                                  
+					                                    <div class="us_fan_count_desc">Devolución libros</div>
+					                                </div>
+					                            </a>
+					                        </div>
+					                    </div>
+					                </div>
+					            </aside>
+					        </section>
+					    </section>
+
+
+	</ui:define>
+  </ui:composition>
+</html>

@@ -206,10 +206,10 @@ ul#menu li.tab_selected a:hover,ul#menu li a:hover {
 }
 
 #panel {
-	width: 554px;
+	width:528px;
 	float: left;
 	margin: 0 0 20px 20px;
-	height: 154px;
+	height: 352px;
 	border: 15px solid #0081B6;
 }
 
@@ -577,23 +577,23 @@ div[class*='us_facebook'] {
 }
 
 .us_wrapper .us-icon-pinterest::before {
-	content: "F";
+	content: "D";
 }
 
 .us_wrapper .us-icon-google::before {
-	content: "B";
+	content: "A";
 }
 
 .us_wrapper .us-icon-twitter::before {
-	content: "C";
+	content: "B";
 }
 
 .us_wrapper .us-icon-facebook::before {
-	content: "E";
+	content: "A";
 }
 
 .us_wrapper .us-icon-pinterest1::before {
-	content: "C";
+	content: "B";
 }
 
 .us_wrapper .us-icon-google1::before {
