@@ -10,13 +10,9 @@ import java.util.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.event.ValueChangeEvent;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 import ejb.BookManagementFacade;
-import jpa.DistributorJPA;
 
 
 /**

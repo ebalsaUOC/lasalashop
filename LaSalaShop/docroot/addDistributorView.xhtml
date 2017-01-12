@@ -16,28 +16,28 @@
 		<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
 				
 				<h:outputLabel value="Nombre comercial:"/>
-				<h:inputText value="nombre comercial" binding="#{input1}" /> 
+				<h:inputText value="TFGs UUU" binding="#{input1}" /> 
 				
 				<h:outputLabel value="Razón social:"/>
-				<h:inputText value="razón social" binding="#{input2}" /> 			
+				<h:inputText value="UOC" binding="#{input2}" /> 			
 				
 				<h:outputLabel value="CIF:"/>
-				<h:inputText value="cif:" binding="#{input3}" /> 
+				<h:inputText value="123456789A" binding="#{input3}" /> 
 				
 				<h:outputLabel value="Dirección email distribuidora:"/>
-				<h:inputText value="dirección email distribuidora:" binding="#{input4}" /> 
+				<h:inputText value="mail@uoc.edu" binding="#{input4}" /> 
 				
 				<h:outputLabel value="Teléfono principal"/>
-				<h:inputText value="teléfono principal:" binding="#{input5}" /> 
+				<h:inputText value="93123456789:" binding="#{input5}" /> 
 				
 				<h:outputLabel value="Contacto comercial:"/>
-				<h:inputText value="contacto comercial:" binding="#{input6}" /> 
+				<h:inputText value="Dpto Comercial" binding="#{input6}" /> 
 				
 				<h:outputLabel value="Dirección email comercial"/>
-				<h:inputText value="dirección email comercial:" binding="#{input7}" /> 
+				<h:inputText value="comercial@uoc.edu" binding="#{input7}" /> 
 				
 				<h:outputLabel value="Teléfono comercial"/>
-				<h:inputText value="teléfono comercial:" binding="#{input8}" /> 
+				<h:inputText value="68686854877" binding="#{input8}" /> 
 				
 			</h:panelGrid>
 			<h:commandButton value="GUARDAR" action="#{addDistributorMBean.addDistributor(input1.value,input2.value,input3.value,input4.value,input5.value,input6.value,input7.value,input8.value)}" />

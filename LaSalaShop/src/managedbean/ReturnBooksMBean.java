@@ -3,7 +3,6 @@ package managedbean;
 import java.util.*;
 
 import javax.ejb.EJB;
-import javax.faces.model.SelectItem;
 import javax.faces.bean.*;
 import javax.faces.event.ValueChangeEvent;
 
@@ -43,14 +42,8 @@ public class ReturnBooksMBean {
 	 * @throws Exception
 	 */	
 	
-	public Collection<BookJPA> getBooksListView() throws Exception
-	{		
-//		Properties props = System.getProperties();
-//		Context ctx = new InitialContext(props);
-//		categories = (CategoryFacadeRemote) ctx.lookup("java:app/EPCSD_Practica.jar/CategoryFacadeBean!ejb.CategoryFacadeRemote");
-//		categoryListView = (Collection<CategoryJPA>)categories.listAllCategories();
-//		
-//		return categoryListView;	
+	public Collection<BookJPA> getBooksListView() throws Exception{		
+	
 		
 		//CODIGO PARA EL PROTOTIPO:
 		Collection<BookJPA> booksListViewP = new ArrayList<BookJPA>();
@@ -76,7 +69,6 @@ public class ReturnBooksMBean {
 	
 	private void distributorsDescList(){
 		
-		//TODO: CODIFICAR EN ADDBOOK Y COPIAR
 		
 		this.distributorsDescList.add("DISTRIB_1");
 		this.distributorsDescList.add("dist_2");

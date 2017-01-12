@@ -28,20 +28,20 @@
 		<f:selectItems value="#{addBookMBean.distributorsDescList}" />
 		</h:selectOneMenu>
 		<h:panelGrid columns="2" border="0" frame="border" cellpadding="2" cellspacing="2" width="100%">
-				<h:outputLabel value="Título:"/>
+				<h:outputLabel value="TFG LaSalaShop"/>
 				<h:inputText value="título" binding="#{input1}" /> 
 				<h:outputLabel value="Autor:"/>
-				<h:inputText value="autor" binding="#{input2}" /> 
+				<h:inputText value="Eduardo" binding="#{input2}" /> 
 				<h:outputLabel value="Editorial:"/>
-				<h:inputText value="editorial" binding="#{input3}" /> 
+				<h:inputText value="UOC editions" binding="#{input3}" /> 
 				<h:outputLabel value="ISBN:"/>
-				<h:inputText value="isbn" binding="#{input4}" /> 
+				<h:inputText value="6547889454" binding="#{input4}" /> 
 				<h:outputLabel value="Precio Compra:"/>
-				<h:inputText value="0.00" binding="#{input5}" validatorMessage="Precio compra formato incorrecto">
+				<h:inputText value="10.00" binding="#{input5}" validatorMessage="Precio compra formato incorrecto">
 				 <f:validateRegex pattern="[0-9.]+" />
 				</h:inputText> 
 				<h:outputLabel value="PVP:"/>
-				<h:inputText value="0.00" binding="#{input6}" validatorMessage="PVP formato incorrecto">
+				<h:inputText value="20.00" binding="#{input6}" validatorMessage="PVP formato incorrecto">
 				 <f:validateRegex pattern="[0-9.]+" />
 				</h:inputText> 
 				<h:outputLabel value="Unidades:"/>

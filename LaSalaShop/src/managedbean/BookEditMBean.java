@@ -45,32 +45,45 @@ public class BookEditMBean implements Serializable
 		this.dataBook=b;
 	}
 	
-	public String editBook(String text) throws Exception{
+	public String editBook(String title, String author, String editor, String isbn, String price, String pvp) throws Exception{
 		//lookup for business class
 		Properties props = System.getProperties();
 		Context ctx = new InitialContext(props);
 		bookRemote = (BookManagementFacade)ctx.lookup("java:app/lasalashop.jar/BookManagementImpl!ejb.BookManagementFacade"); 
 
-//TODO: RECOGER VALORES Y EDITAR		
-		
 		//Instantiate the return object
 		OpStatus op = new OpStatus();
+
+		//Parse currency
+		double priceD =0;
+		double pvpD = 0;
+		try{
+			priceD=Double.parseDouble(price);
+			pvpD=Double.parseDouble(pvp);
+		} catch(Exception e){
+			this.errMsg ="Revise los campos de percio y pvp. Formato incorrecto";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
+			return "bookEditView";
+		}
+				
+		//Instantiate book to move data across layers
+		BookJPA b = new BookJPA(title, author, editor, isbn, priceD, pvpD);
+		op=bookRemote.editBookB(b);
 		
 		//Call Business to edit Book
-//TODO: DESCOMENTAR		op = bookRemote.editBookB(b);
+		op = bookRemote.editBookB(b);
 						
 		//Parse return from business layer
 		if("OK".equals(op.getCod())){
-			this.okMsg = op.getMsg();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.okMsg));
+			this.errMsg = op.getMsg();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("LIBRO GUARDADO CORRECTAMENTE"));
 			//Redirect to main
-			return "lasalashopMainTemplate";
+			  return "bookEditView";
 		}
-		
 		else{
 			this.errMsg = op.getMsg();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
-			return "addBookView";
+			return "editBookView";
 		}
 	}
 

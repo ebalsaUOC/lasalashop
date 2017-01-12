@@ -57,7 +57,7 @@ public class AddBookMBean implements Serializable
 		
 		//Input validations OK or ERR msg
 		if(false ){
-			//TODO: CREATE ALL VALIDATION LOGIC HERE
+			//CREATE ALL VALIDATION LOGIC HERE
 			this.errMsg ="Rellene todos los campos por favor";
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
 			return "addBookView";

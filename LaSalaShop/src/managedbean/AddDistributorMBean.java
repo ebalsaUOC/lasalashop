@@ -46,7 +46,7 @@ public class AddDistributorMBean implements Serializable{
 		OpStatus op = new OpStatus();
 		
 		if(false ){
-			//TODO: LOGICA DE VALIDACIONES
+			//LOGICA DE VALIDACIONES
 			this.errMsg ="Rellene todos los campos por favor";
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.errMsg));
 			return "addDistributorView";
@@ -57,10 +57,10 @@ public class AddDistributorMBean implements Serializable{
 		op = bookRemote.addDistributor(d);
 						
 		if("OK".equals(op.getCod())){
-			this.okMsg = op.getMsg();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(this.okMsg));
-		
-			return "booksMainView";
+			this.errMsg = op.getMsg();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("DISTRIBUIDORA GUARDADA CORRECTAMENTE"));
+			//Redirect to main
+			  return "addDistributorView";
 		}
 		
 		else{

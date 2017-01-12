@@ -1,6 +1,5 @@
 package ejb;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -112,8 +111,26 @@ public class BookManagementImpl implements BookManagementFacade {
 	 */		
 	@Override
 	public OpStatus editBookB(BookJPA b) {
-		// TODO Auto-generated method stub
-		return null;
+		String sQuery="UPDATE BookJPA  SET title = :title, "
+				+ " author = :author, "
+				+ " editor = :editor, "
+				+ " price = :price, "
+				+ " pvp = :pvp, "
+				+ "  WHERE b.isbn=";
+		
+		Query query = entman.createQuery(sQuery)
+				.setParameter("author", b.getAuthor())
+				.setParameter("editor", b.getEditor())
+				.setParameter("price", b.getPrice())
+				.setParameter("pvp", b.getPvp())
+				.setParameter("title", b.getTitle());
+		
+		query.executeUpdate();
+		
+		OpStatus status = new OpStatus();
+		status.setCod("OK");
+		status.setMsg("Book created sucessfull");
+		return status;
 	}
 	
 	

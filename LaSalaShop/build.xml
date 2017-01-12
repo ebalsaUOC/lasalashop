@@ -1,4 +1,4 @@
-<project name="Practical Case Study Web service" default="all" basedir=".">
+<project name="LaSalaShop" default="all" basedir=".">
 
   <description>
 	This is a file that compiles and distributes the ebalsa's TFG
@@ -29,7 +29,7 @@
 
   <target name="init"
 		description = "inicialitzacions is relevant: the structure created
-		copy files and directories there. xml ">    <!-- Crea el time-stamp -->
+		copy files and directories there. xml ">    <!-- Creata time-stamp -->
     <tstamp/>
     <!-- It creates the directory structure -->
     <mkdir dir="${buildjar}"/>

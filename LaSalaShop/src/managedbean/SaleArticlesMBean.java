@@ -2,11 +2,9 @@ package managedbean;
 
 import java.util.*;
 
-import javax.faces.model.SelectItem;
 import javax.faces.bean.*;
 
 import jpa.ArticlePrototypeJPA;
-import jpa.BookJPA;
 
 
 

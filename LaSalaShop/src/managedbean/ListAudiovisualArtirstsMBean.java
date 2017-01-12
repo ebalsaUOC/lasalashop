@@ -2,11 +2,9 @@ package managedbean;
 
 import java.util.*;
 
-import javax.faces.model.SelectItem;
 import javax.faces.bean.*;
 
 import jpa.ArtistPrototypeJPA;
-import jpa.BookJPA;
 
 
 
@@ -18,33 +16,17 @@ import jpa.BookJPA;
 
 public class ListAudiovisualArtirstsMBean {
 	
-	//@EJB private CategoryFacadeRemote categories;
-//	protected Collection<SelectItem> booksList = new ArrayList<SelectItem>();
+
 	protected Collection<ArtistPrototypeJPA> artistsListView;
 	
-	public ListAudiovisualArtirstsMBean() throws Exception
-	{
+	public ListAudiovisualArtirstsMBean() throws Exception{
 		//this.bookList();
 	}
 
-	/**
-	 * Method get which return Categories Collection
-	 * @return Collection
-	 */
-//	public Collection<SelectItem> getBooksList()
-//	{
-//		return booksList;
-//	}
+
 	
-	
-	public Collection<ArtistPrototypeJPA> getArtistsListView() throws Exception
-	{		
-//		Properties props = System.getProperties();
-//		Context ctx = new InitialContext(props);
-//		categories = (CategoryFacadeRemote) ctx.lookup("java:app/EPCSD_Practica.jar/CategoryFacadeBean!ejb.CategoryFacadeRemote");
-//		categoryListView = (Collection<CategoryJPA>)categories.listAllCategories();
-//		
-//		return categoryListView;	
+	public Collection<ArtistPrototypeJPA> getArtistsListView() throws Exception	{		
+
 		
 		//CODIGO PARA EL PROTOTIPO:
 		Collection<ArtistPrototypeJPA> ArtistsListView = new ArrayList<ArtistPrototypeJPA>();

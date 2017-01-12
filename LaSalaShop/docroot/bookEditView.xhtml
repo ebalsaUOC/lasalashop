@@ -31,7 +31,7 @@
 				<h:outputLabel value="Estado:"/>
 				<h:outputText value="#{bookEditMBean.dataBook.status}" /> 
 		</h:panelGrid>
-			<h:commandButton  value="EDITAR" action="#"  />
+			<h:commandButton  value="EDITAR" action="#{bookEditMBean.editBook(input1.value,input2.value,input3.value,input4.value,input5.value,input6.value)}" />
 			<h:commandButton  value="VOLVER" action="listBooksResultView.xhtml" />
 		<h:messages styleClass="display-error" />
 		</h:form>

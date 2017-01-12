@@ -7,19 +7,10 @@ package managedbean;
 import java.io.Serializable;
 import java.util.*;
 
-import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.servlet.http.HttpSession;
-import javax.faces.context.FacesContext;
-
-import jpa.DistributorJPA;
 
 
 /**
@@ -53,8 +44,7 @@ public class AddEventMBean implements Serializable
 		
 	}
 	
-	private void spacesList() throws NamingException
-		{
+	private void spacesList() throws NamingException{
 
 		this.spacesDescList.add("Exposiciones LaSala");
 		this.spacesDescList.add("Sala Hygge");
